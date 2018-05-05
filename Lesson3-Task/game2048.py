@@ -5,7 +5,7 @@ import getch
 
 class Game:
     def __init__(self):
-        self.field = [[0]*4 for _ in range(4)]
+        self.field = [[0] * 4 for _ in range(4)]
         self.num_row = len(self.field)
         self.num_col = max(len(row) for row in self.field)
         self.score = 0
@@ -15,7 +15,8 @@ class Game:
         for row in range(self.num_row):
             for col in range(f_start1, f_stop1, f_step):
                 for col_pair in range(col + f_start2, f_stop2, f_step):
-                    if self.field[row][col_pair] > 0 and self.field[row][col] == self.field[row][col_pair]:
+                    if self.field[row][col_pair] > 0 and \
+                            self.field[row][col] == self.field[row][col_pair]:
                         self.field[row][col] *= 2
                         self.field[row][col_pair] = 0
                         self.score += self.field[row][col]
@@ -38,7 +39,8 @@ class Game:
         for col in range(self.num_col):
             for row in range(f_start1, f_stop1, f_step):
                 for row_pair in range(row + f_start2, f_stop2, f_step):
-                    if self.field[row_pair][col] > 0 and self.field[row][col] == self.field[row_pair][col]:
+                    if self.field[row_pair][col] > 0 and \
+                            self.field[row][col] == self.field[row_pair][col]:
                         self.field[row][col] *= 2
                         self.field[row_pair][col] = 0
                         self.score += self.field[row][col]
