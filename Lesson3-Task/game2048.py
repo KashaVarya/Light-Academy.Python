@@ -8,84 +8,69 @@ class Game:
         self.field = [[0]*4 for _ in range(4)]
         self.num_row = len(self.field)
         self.num_col = max(len(row) for row in self.field)
+        self.score = 0
 
-
-    def move(self):
-
-
-    def move_left(self):
+    def move_hor(self, f_start1, f_stop1, f_step, f_start2, f_stop2):
         # Складываем одинаковые числа
         for row in range(self.num_row):
-            for col in range(self.num_col - 1):
-                for col_pair in range(col + 1, self.num_col):
+            for col in range(f_start1, f_stop1, f_step):
+                for col_pair in range(col + f_start2, f_stop2, f_step):
                     if self.field[row][col_pair] > 0 and self.field[row][col] == self.field[row][col_pair]:
                         self.field[row][col] *= 2
                         self.field[row][col_pair] = 0
+                        self.score += self.field[row][col]
                         break
                     elif self.field[row][col_pair] > 0:
                         break
 
-        # Смещаем элементы влево, если есть пустые клетки
+        # Смещаем элементы, если есть пустые клетки
         for row in range(self.num_row):
-            for col_em in range(self.num_col - 1):
+            for col_em in range(f_start1, f_stop1, f_step):
                 if self.field[row][col_em] == 0:
-                        for col in range(col_em + 1, self.num_col):
-                            if self.field[row][col] > 0:
-                                self.field[row][col_em] = self.field[row][col]
-                                self.field[row][col] = 0
-                                break
-
-    def move_right(self):
-        # Складываем одинаковые числа
-        for row in range(self.num_row):
-            for col in range(self.num_col - 1, 0, -1):
-                for col_pair in range(col - 1, -1, -1):
-                    if self.field[row][col_pair] > 0 and self.field[row][col] == self.field[row][col_pair]:
-                        self.field[row][col] *= 2
-                        self.field[row][col_pair] = 0
-                        break
-                    elif self.field[row][col_pair] > 0:
-                        break
-
-        # Смещаем элементы вправо, если есть пустые клетки
-        for row in range(self.num_row):
-            for col_em in range(self.num_col - 1, 0, -1):
-                if self.field[row][col_em] == 0:
-                    for col in range(col_em - 1, -1, -1):
+                    for col in range(col_em + f_start2, f_stop2, f_step):
                         if self.field[row][col] > 0:
                             self.field[row][col_em] = self.field[row][col]
                             self.field[row][col] = 0
                             break
 
-    def move_up(self):
+    def move_ver(self, f_start1, f_stop1, f_step, f_start2, f_stop2):
         # Складываем одинаковые числа
-        for row in range(self.num_row):
-            for col in range(self.num_col - 1):
-                for col_pair in range(col + 1, self.num_col):
-                    if self.field[row][col_pair] > 0 and self.field[row][col] == self.field[row][col_pair]:
+        for col in range(self.num_col):
+            for row in range(f_start1, f_stop1, f_step):
+                for row_pair in range(row + f_start2, f_stop2, f_step):
+                    if self.field[row_pair][col] > 0 and self.field[row][col] == self.field[row_pair][col]:
                         self.field[row][col] *= 2
-                        self.field[row][col_pair] = 0
+                        self.field[row_pair][col] = 0
+                        self.score += self.field[row][col]
                         break
-                    elif self.field[row][col_pair] > 0:
+                    elif self.field[row_pair][col] > 0:
                         break
 
-        # Смещаем элементы вверх, если есть пустые клетки
-        for row in range(self.num_row):
-            for col_em in range(self.num_col - 1):
-                if self.field[row][col_em] == 0:
-                        for col in range(col_em + 1, self.num_col):
-                            if self.field[row][col] > 0:
-                                self.field[row][col_em] = self.field[row][col]
-                                self.field[row][col] = 0
-                                break
+        # Смещаем элементы, если есть пустые клетки
+        for col in range(self.num_col):
+            for row_em in range(f_start1, f_stop1, f_step):
+                if self.field[row_em][col] == 0:
+                    for row in range(row_em + f_start2, f_stop2, f_step):
+                        if self.field[row][col] > 0:
+                            self.field[row_em][col] = self.field[row][col]
+                            self.field[row][col] = 0
+                            break
+
+    def move_left(self):
+        self.move_hor(0, self.num_col - 1, 1, 1, self.num_col)
+
+    def move_right(self):
+        self.move_hor(self.num_col - 1, 0, -1, -1, -1)
+
+    def move_up(self):
+        self.move_ver(0, self.num_row - 1, 1, 1, self.num_row)
 
     def move_down(self):
-        raise NotImplementedError
+        self.move_ver(self.num_row - 1, 0, -1, -1, -1)
 
     def has_moves(self):
-        count = False
-
         # Проверяем, есть ли пустые клетки
+        count = False
         for row in range(self.num_row):
             for col in range(self.num_col):
                 if self.field[row][col] == 0:
@@ -96,7 +81,7 @@ class Game:
         return False
 
     def get_score(self):
-        raise NotImplementedError
+        return self.score
 
     def get_field(self):
         for _ in range(2):
@@ -130,8 +115,8 @@ def main():
             for cell in row
         )))
 
-        # print("\033[H\033[J", end="")
-        # print("Score: ", game.get_score())
+        print("\033[H\033[J", end="")
+        print("Score: ", game.get_score())
 
         print('\n'.join(
             ' '.join(
