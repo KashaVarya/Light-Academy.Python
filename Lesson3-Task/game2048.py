@@ -1,6 +1,6 @@
-import curses
 import random
 from random import randrange
+import getch
 
 
 class Game:
@@ -130,24 +130,30 @@ def main():
             print("No available moves left, game over.")
             break
 
-        print("L, R, U, D - move")
+        print("W, A, S, D - move")
         print("Q - exit")
 
-        try:
-            c = input("> ")
-        except (EOFError, KeyboardInterrupt):
-            break
+        while True:
+            try:
+                c = getch.getch()
+            except (EOFError, KeyboardInterrupt):
+                break
 
-        if c in ('l', 'L'):
-            game.move_left()
-        elif c in ('r', 'R'):
-            game.move_right()
-        elif c in ('u', 'U'):
-            game.move_up()
-        elif c in ('d', 'D'):
-            game.move_down()
-        elif c in ('q', 'Q'):
-            break
+            if c in ('a', 'A'):
+                game.move_left()
+                break
+            elif c in ('d', 'D'):
+                game.move_right()
+                break
+            elif c in ('w', 'W'):
+                game.move_up()
+                break
+            elif c in ('s', 'S'):
+                game.move_down()
+                break
+            elif c in ('q', 'Q'):
+                print("Bye!")
+                exit()
 
     print("Bye!")
 
