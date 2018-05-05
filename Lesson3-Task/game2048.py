@@ -1,9 +1,16 @@
+"""
+Game 2048
+"""
+
 import random
 from random import randrange
 import getch
 
 
 class Game:
+    """
+    Main class of the program
+    """
     def __init__(self):
         self.field = [[0] * 4 for _ in range(4)]
         self.num_row = len(self.field)
@@ -11,7 +18,15 @@ class Game:
         self.score = 0
 
     def move_hor(self, f_start1, f_stop1, f_step, f_start2, f_stop2):
-        # Складываем одинаковые числа
+        """
+        Add the same numbers and shift elements
+        :param f_start1: start of the first cycle
+        :param f_stop1: stop of the first cycle
+        :param f_step: cycle step
+        :param f_start2: start of the second cycle
+        :param f_stop2: stop of the second cycle
+        :return: void, change self.field
+        """
         for row in range(self.num_row):
             for col in range(f_start1, f_stop1, f_step):
                 for col_pair in range(col + f_start2, f_stop2, f_step):
@@ -24,7 +39,6 @@ class Game:
                     elif self.field[row][col_pair] > 0:
                         break
 
-        # Смещаем элементы, если есть пустые клетки
         for row in range(self.num_row):
             for col_em in range(f_start1, f_stop1, f_step):
                 if self.field[row][col_em] == 0:
@@ -35,6 +49,15 @@ class Game:
                             break
 
     def move_ver(self, f_start1, f_stop1, f_step, f_start2, f_stop2):
+        """
+        Add the same numbers and shift elements
+        :param f_start1: start of the first cycle
+        :param f_stop1: stop of the first cycle
+        :param f_step: cycle step
+        :param f_start2: start of the second cycle
+        :param f_stop2: stop of the second cycle
+        :return: void, change self.field
+        """
         # Складываем одинаковые числа
         for col in range(self.num_col):
             for row in range(f_start1, f_stop1, f_step):
@@ -59,53 +82,78 @@ class Game:
                             break
 
     def move_left(self):
+        """
+        Move elements to the left
+        :return: void, change self.field
+        """
         self.move_hor(0, self.num_col - 1, 1, 1, self.num_col)
 
     def move_right(self):
+        """
+        Move elements to the right
+        :return: void, change self.field
+        """
         self.move_hor(self.num_col - 1, 0, -1, -1, -1)
 
     def move_up(self):
+        """
+        Move elements up
+        :return: void, change self.field
+        """
         self.move_ver(0, self.num_row - 1, 1, 1, self.num_row)
 
     def move_down(self):
+        """
+        Move elements down
+        :return: void, change self.field
+        """
         self.move_ver(self.num_row - 1, 0, -1, -1, -1)
 
     def has_moves(self):
-        # Проверяем, есть ли пустые клетки
-        count = False
+        """
+        Check for empty cell
+        :return: True if there are empty cell;
+                 False if  there are not empty cell
+        """
         for row in range(self.num_row):
             for col in range(self.num_col):
                 if self.field[row][col] == 0:
-                    if count:
-                        return True
-                    else:
-                        count = True
+                    return True
         return False
 
     def get_score(self):
+        """
+        Getting game score
+        :return: score of the game
+        """
         return self.score
 
     def get_field(self):
-        for _ in range(2):
-            # Определяем вероятность появления 2 или 4
-            if random.randint(1, 100) > 10:
-                new_num = 2
-            else:
-                new_num = 4
+        """
+        Randomly assign 2 or 4 to an empty cell
+        :return: field of the game
+        """
+        if random.randint(1, 100) > 10:
+            new_num = 2
+        else:
+            new_num = 4
 
-            # Рандомно присваиваем новые значения в пустые клетки
-            while True:
-                random_index = randrange(0, self.num_row * self.num_col)
-                row = random_index // self.num_col
-                col = random_index % self.num_col
-                if self.field[row][col] == 0:
-                    self.field[row][col] = new_num
-                    break
+        while True:
+            random_index = randrange(0, self.num_row * self.num_col)
+            row = random_index // self.num_col
+            col = random_index % self.num_col
+            if self.field[row][col] == 0:
+                self.field[row][col] = new_num
+                break
 
         return self.field
 
 
 def main():
+    """
+    Main function
+    :return: void
+    """
     game = Game()
 
     while True:
