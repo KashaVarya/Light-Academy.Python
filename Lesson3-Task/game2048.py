@@ -5,7 +5,7 @@ Game 2048
 import random
 from random import randrange
 import getch
-
+                            # Ещё не доделана функция has_moves()
 
 class Game:
     """
