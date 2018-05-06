@@ -112,8 +112,8 @@ class Game:
     def check_empty(self):
         """
         Check for empty cell
-        :return: True if there are empty cell;
-                 False if  there are not empty cell
+        :return: True if there is empty cell;
+                 False if  there is not empty cell
         """
         for row in range(self.num_row):
             for col in range(self.num_col):
@@ -122,7 +122,26 @@ class Game:
         return False
 
     def has_moves(self):
-        return True
+        """
+        Checking the availability of moves
+        :return: True if there is move
+                 False if there is not move
+        """
+        for row in range(self.num_row - 1):
+            for col in range(self.num_col - 1):
+                if self.field[row][col] == self.field[row][col + 1] or \
+                        self.field[row][col] == self.field[row + 1][col]:
+                    return True
+
+        for col in range(self.num_col - 1):
+            if self.field[self.num_row - 1][col] == self.field[self.num_row - 1][col + 1]:
+                return True
+
+        for row in range(self.num_row - 1):
+            if self.field[row][self.num_col - 1] == self.field[row + 1][self.num_col - 1]:
+                return True
+
+        return False
 
     def get_score(self):
         """
@@ -195,9 +214,12 @@ def main():
     game.add_random_cell()
 
     while True:
-
         old_field = deepcopy(game.get_field())
         print_field(game, old_field)
+
+        if not game.has_moves():
+            print("No available moves left, game over.")
+            break
 
         while True:
             try:
@@ -225,10 +247,6 @@ def main():
 
         if field != old_field and game.check_empty():
             game.add_random_cell()
-
-        if not game.has_moves():
-            print("No available moves left, game over.")
-            break
 
     print("Bye!")
 
