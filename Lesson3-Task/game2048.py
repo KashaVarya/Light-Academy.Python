@@ -1,11 +1,11 @@
 """
 Game 2048
 """
-
 import random
 from random import randrange
 import getch
-                            # Ещё не доделана функция has_moves()
+from copy import deepcopy
+
 
 class Game:
     """
@@ -109,7 +109,7 @@ class Game:
         """
         self.move_ver(self.num_row - 1, 0, -1, -1, -1)
 
-    def has_moves(self):
+    def check_empty(self):
         """
         Check for empty cell
         :return: True if there are empty cell;
@@ -121,6 +121,9 @@ class Game:
                     return True
         return False
 
+    def has_moves(self):
+        return True
+
     def get_score(self):
         """
         Getting game score
@@ -130,8 +133,15 @@ class Game:
 
     def get_field(self):
         """
+        Getting game field
+        :return: game field
+        """
+        return self.field
+
+    def add_random_cell(self):
+        """
         Randomly assign 2 or 4 to an empty cell
-        :return: field of the game
+        :return: void
         """
         if random.randint(1, 100) > 10:
             new_num = 2
@@ -146,7 +156,33 @@ class Game:
                 self.field[row][col] = new_num
                 break
 
-        return self.field
+
+def print_field(game, field):
+    """
+    Print field
+    :param game: reference to object game
+    :param field: reference to object field
+    :return: void
+    """
+    print("\033[H\033[J", end="")
+    print("Score: ", game.get_score())
+
+    cell_width = len(str(max(
+        cell
+        for row in field
+        for cell in row
+    )))
+
+    print('\n'.join(
+        ' '.join(
+            str(cell).rjust(cell_width)
+            for cell in row
+        )
+        for row in field
+    ))
+
+    print("W, A, S, D - move")
+    print("Q - exit")
 
 
 def main():
@@ -155,33 +191,13 @@ def main():
     :return: void
     """
     game = Game()
+    game.add_random_cell()
+    game.add_random_cell()
 
     while True:
-        # находим максимальную длину числа
-        field = game.get_field()
-        cell_width = len(str(max(
-            cell
-            for row in field
-            for cell in row
-        )))
 
-        print("\033[H\033[J", end="")
-        print("Score: ", game.get_score())
-
-        print('\n'.join(
-            ' '.join(
-                str(cell).rjust(cell_width)
-                for cell in row
-            )
-            for row in field
-        ))
-
-        if not game.has_moves():
-            print("No available moves left, game over.")
-            break
-
-        print("W, A, S, D - move")
-        print("Q - exit")
+        old_field = deepcopy(game.get_field())
+        print_field(game, old_field)
 
         while True:
             try:
@@ -204,6 +220,15 @@ def main():
             elif c in ('q', 'Q'):
                 print("Bye!")
                 exit()
+
+        field = game.get_field()
+
+        if field != old_field and game.check_empty():
+            game.add_random_cell()
+
+        if not game.has_moves():
+            print("No available moves left, game over.")
+            break
 
     print("Bye!")
 
