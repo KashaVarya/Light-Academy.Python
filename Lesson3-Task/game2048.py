@@ -3,8 +3,8 @@ Game 2048
 """
 import random
 from random import randrange
-import getch
 from copy import deepcopy
+import getch
 
 
 class Game:
@@ -17,19 +17,16 @@ class Game:
         self.num_col = max(len(row) for row in self.field)
         self.score = 0
 
-    def move_hor(self, f_start1, f_stop1, f_step, f_start2, f_stop2):
+    def move_hor(self, param):
         """
         Add the same numbers and shift elements
-        :param f_start1: start of the first cycle
-        :param f_stop1: stop of the first cycle
-        :param f_step: cycle step
-        :param f_start2: start of the second cycle
-        :param f_stop2: stop of the second cycle
+        :param param: start and stop of the first cycle, cycle step,
+                      start and stop of the second cycle
         :return: void, change self.field
         """
         for row in range(self.num_row):
-            for col in range(f_start1, f_stop1, f_step):
-                for col_pair in range(col + f_start2, f_stop2, f_step):
+            for col in range(param[0], param[1], param[2]):
+                for col_pair in range(col + param[3], param[4], param[2]):
                     if self.field[row][col_pair] > 0 and \
                             self.field[row][col] == self.field[row][col_pair]:
                         self.field[row][col] *= 2
@@ -40,28 +37,24 @@ class Game:
                         break
 
         for row in range(self.num_row):
-            for col_em in range(f_start1, f_stop1, f_step):
+            for col_em in range(param[0], param[1], param[2]):
                 if self.field[row][col_em] == 0:
-                    for col in range(col_em + f_start2, f_stop2, f_step):
+                    for col in range(col_em + param[3], param[4], param[2]):
                         if self.field[row][col] > 0:
                             self.field[row][col_em] = self.field[row][col]
                             self.field[row][col] = 0
                             break
 
-    def move_ver(self, f_start1, f_stop1, f_step, f_start2, f_stop2):
+    def move_ver(self, param):
         """
         Add the same numbers and shift elements
-        :param f_start1: start of the first cycle
-        :param f_stop1: stop of the first cycle
-        :param f_step: cycle step
-        :param f_start2: start of the second cycle
-        :param f_stop2: stop of the second cycle
+        :param param: start and stop of the first cycle, cycle step,
+                      start and stop of the second cycle
         :return: void, change self.field
         """
-        # Складываем одинаковые числа
         for col in range(self.num_col):
-            for row in range(f_start1, f_stop1, f_step):
-                for row_pair in range(row + f_start2, f_stop2, f_step):
+            for row in range(param[0], param[1], param[2]):
+                for row_pair in range(row + param[3], param[4], param[2]):
                     if self.field[row_pair][col] > 0 and \
                             self.field[row][col] == self.field[row_pair][col]:
                         self.field[row][col] *= 2
@@ -71,11 +64,10 @@ class Game:
                     elif self.field[row_pair][col] > 0:
                         break
 
-        # Смещаем элементы, если есть пустые клетки
         for col in range(self.num_col):
-            for row_em in range(f_start1, f_stop1, f_step):
+            for row_em in range(param[0], param[1], param[2]):
                 if self.field[row_em][col] == 0:
-                    for row in range(row_em + f_start2, f_stop2, f_step):
+                    for row in range(row_em + param[3], param[4], param[2]):
                         if self.field[row][col] > 0:
                             self.field[row_em][col] = self.field[row][col]
                             self.field[row][col] = 0
@@ -86,28 +78,28 @@ class Game:
         Move elements to the left
         :return: void, change self.field
         """
-        self.move_hor(0, self.num_col - 1, 1, 1, self.num_col)
+        self.move_hor([0, self.num_col - 1, 1, 1, self.num_col])
 
     def move_right(self):
         """
         Move elements to the right
         :return: void, change self.field
         """
-        self.move_hor(self.num_col - 1, 0, -1, -1, -1)
+        self.move_hor([self.num_col - 1, 0, -1, -1, -1])
 
     def move_up(self):
         """
         Move elements up
         :return: void, change self.field
         """
-        self.move_ver(0, self.num_row - 1, 1, 1, self.num_row)
+        self.move_ver([0, self.num_row - 1, 1, 1, self.num_row])
 
     def move_down(self):
         """
         Move elements down
         :return: void, change self.field
         """
-        self.move_ver(self.num_row - 1, 0, -1, -1, -1)
+        self.move_ver([self.num_row - 1, 0, -1, -1, -1])
 
     def check_empty(self):
         """
@@ -123,7 +115,7 @@ class Game:
 
     def has_moves(self):
         """
-        Checking the availability of moves
+        Check the availability of moves
         :return: True if there is move
                  False if there is not move
         """
@@ -134,11 +126,13 @@ class Game:
                     return True
 
         for col in range(self.num_col - 1):
-            if self.field[self.num_row - 1][col] == self.field[self.num_row - 1][col + 1]:
+            if self.field[self.num_row - 1][col] == \
+                    self.field[self.num_row - 1][col + 1]:
                 return True
 
         for row in range(self.num_row - 1):
-            if self.field[row][self.num_col - 1] == self.field[row + 1][self.num_col - 1]:
+            if self.field[row][self.num_col - 1] == \
+                    self.field[row + 1][self.num_col - 1]:
                 return True
 
         return False
@@ -223,23 +217,23 @@ def main():
 
         while True:
             try:
-                c = getch.getch()
+                but = getch.getch()  # pylint: disable=c-extension-no-member
             except (EOFError, KeyboardInterrupt):
                 break
 
-            if c in ('a', 'A'):
+            if but in ('a', 'A'):
                 game.move_left()
                 break
-            elif c in ('d', 'D'):
+            elif but in ('d', 'D'):
                 game.move_right()
                 break
-            elif c in ('w', 'W'):
+            elif but in ('w', 'W'):
                 game.move_up()
                 break
-            elif c in ('s', 'S'):
+            elif but in ('s', 'S'):
                 game.move_down()
                 break
-            elif c in ('q', 'Q'):
+            elif but in ('q', 'Q'):
                 print("Bye!")
                 exit()
 
