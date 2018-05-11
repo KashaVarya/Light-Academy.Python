@@ -3,6 +3,8 @@ Game 2048 with curses interface
 """
 import curses
 from copy import deepcopy
+from time import sleep
+
 from game2048 import Game
 
 
@@ -62,8 +64,8 @@ class Renderer:
                 self.game.move_down()
                 break
             if but in (ord('q'), ord('Q')):
-                self.stdscr.addstr(self.row, 0, "Bye!")
-                self.stdscr.refresh()
+                self.print_bye()
+                sleep(1)
                 curses.endwin()
                 exit()
 
@@ -94,6 +96,7 @@ def main():
             game.add_random_cell()
 
     renderer.print_bye()
+    sleep(1)
     curses.endwin()
 
 
