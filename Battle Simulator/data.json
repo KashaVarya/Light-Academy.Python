@@ -1,0 +1,19 @@
+{
+	"name" : "sim #2018.05.16",
+	"clock_seed" : 1,
+	"armies" : [
+		{
+			"name" : "USA",
+			"strategy" : "random",
+			"squards" : [
+				{
+					"name" : "Nuna",
+					"units" : [
+						{
+							"type" : "soldier",
+						}
+					]
+				}
+			] 
+		}
+}
