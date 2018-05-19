@@ -1,880 +1,783 @@
 {
   "armies": [
     {
-      "name": "VAS",
+      "name": "USA",
       "squads": [
         {
-          "name": "VAS squad #1",
+          "name": "USA squad #1",
           "units": [
             {
-              "health": 50,
-              "name": "VAS squad #1, vehicle #1",
+              "health": 259,
+              "name": "USA squad #1, vehicle #1",
               "operators": [
                 {
-                  "health": 50,
-                  "name": "VAS squad #1, vehicle #1, soldier #1",
+                  "health": 57,
+                  "name": "USA squad #1, vehicle #1, soldier #1",
                   "unit_type": "soldier"
                 },
                 {
-                  "health": 50,
-                  "name": "VAS squad #1, vehicle #1, soldier #2",
+                  "health": 61,
+                  "name": "USA squad #1, vehicle #1, soldier #2",
                   "unit_type": "soldier"
                 },
                 {
-                  "health": 50,
-                  "name": "VAS squad #1, vehicle #1, soldier #3",
+                  "health": 97,
+                  "name": "USA squad #1, vehicle #1, soldier #3",
                   "unit_type": "soldier"
                 }
               ],
               "unit_type": "vehicle"
             },
             {
-              "health": 50,
-              "name": "VAS squad #1, vehicle #2",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #1, vehicle #2, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #1, vehicle #2, soldier #2",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #1, vehicle #3",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #1, vehicle #3, soldier #1",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #1, soldier #1",
+              "health": 99,
+              "name": "USA squad #1, soldier #1",
               "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #1, soldier #2",
+              "health": 69,
+              "name": "USA squad #1, soldier #2",
               "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #1, soldier #3",
+              "health": 84,
+              "name": "USA squad #1, soldier #3",
               "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #1, soldier #4",
+              "health": 53,
+              "name": "USA squad #1, soldier #4",
               "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #1, soldier #5",
+              "health": 90,
+              "name": "USA squad #1, soldier #5",
               "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #1, soldier #6",
+              "health": 68,
+              "name": "USA squad #1, soldier #6",
               "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #1, soldier #7",
+              "health": 67,
+              "name": "USA squad #1, soldier #7",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 85,
+              "name": "USA squad #1, soldier #8",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 97,
+              "name": "USA squad #1, soldier #9",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 88,
+              "name": "USA squad #1, soldier #10",
               "unit_type": "soldier"
             }
           ]
         },
         {
-          "name": "VAS squad #2",
+          "name": "USA squad #2",
           "units": [
             {
-              "health": 50,
-              "name": "VAS squad #2, vehicle #1",
+              "health": 347,
+              "name": "USA squad #2, vehicle #1",
               "operators": [
                 {
-                  "health": 50,
-                  "name": "VAS squad #2, vehicle #1, soldier #1",
+                  "health": 55,
+                  "name": "USA squad #2, vehicle #1, soldier #1",
                   "unit_type": "soldier"
                 },
                 {
-                  "health": 50,
-                  "name": "VAS squad #2, vehicle #1, soldier #2",
+                  "health": 92,
+                  "name": "USA squad #2, vehicle #1, soldier #2",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 92,
+                  "name": "USA squad #2, vehicle #1, soldier #3",
                   "unit_type": "soldier"
                 }
               ],
               "unit_type": "vehicle"
             },
             {
-              "health": 50,
-              "name": "VAS squad #2, vehicle #2",
+              "health": 240,
+              "name": "USA squad #2, vehicle #2",
               "operators": [
                 {
-                  "health": 50,
-                  "name": "VAS squad #2, vehicle #2, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #2, vehicle #2, soldier #2",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #2, vehicle #2, soldier #3",
+                  "health": 99,
+                  "name": "USA squad #2, vehicle #2, soldier #1",
                   "unit_type": "soldier"
                 }
               ],
               "unit_type": "vehicle"
             },
             {
-              "health": 50,
-              "name": "VAS squad #2, vehicle #3",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #2, vehicle #3, soldier #1",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #2, soldier #1",
+              "health": 61,
+              "name": "USA squad #2, soldier #1",
               "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #2, soldier #2",
+              "health": 66,
+              "name": "USA squad #2, soldier #2",
               "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #2, soldier #3",
+              "health": 74,
+              "name": "USA squad #2, soldier #3",
               "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #2, soldier #4",
+              "health": 82,
+              "name": "USA squad #2, soldier #4",
               "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #2, soldier #5",
+              "health": 67,
+              "name": "USA squad #2, soldier #5",
               "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #2, soldier #6",
+              "health": 51,
+              "name": "USA squad #2, soldier #6",
               "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #2, soldier #7",
+              "health": 56,
+              "name": "USA squad #2, soldier #7",
               "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #2, soldier #8",
+              "health": 85,
+              "name": "USA squad #2, soldier #8",
               "unit_type": "soldier"
             }
           ]
         },
         {
-          "name": "VAS squad #3",
+          "name": "USA squad #3",
           "units": [
             {
-              "health": 50,
-              "name": "VAS squad #3, vehicle #1",
+              "health": 309,
+              "name": "USA squad #3, vehicle #1",
               "operators": [
                 {
-                  "health": 50,
-                  "name": "VAS squad #3, vehicle #1, soldier #1",
+                  "health": 70,
+                  "name": "USA squad #3, vehicle #1, soldier #1",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 92,
+                  "name": "USA squad #3, vehicle #1, soldier #2",
                   "unit_type": "soldier"
                 }
               ],
               "unit_type": "vehicle"
             },
             {
-              "health": 50,
-              "name": "VAS squad #3, vehicle #2",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #3, vehicle #2, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #3, vehicle #2, soldier #2",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #3, vehicle #2, soldier #3",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
+              "health": 64,
+              "name": "USA squad #3, soldier #1",
+              "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #3, vehicle #3",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #3, vehicle #3, soldier #1",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
+              "health": 58,
+              "name": "USA squad #3, soldier #2",
+              "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #3, vehicle #4",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #3, vehicle #4, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #3, vehicle #4, soldier #2",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
+              "health": 67,
+              "name": "USA squad #3, soldier #3",
+              "unit_type": "soldier"
             },
             {
-              "health": 50,
-              "name": "VAS squad #3, soldier #1",
+              "health": 59,
+              "name": "USA squad #3, soldier #4",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 55,
+              "name": "USA squad #3, soldier #5",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 84,
+              "name": "USA squad #3, soldier #6",
               "unit_type": "soldier"
             },
             {
               "health": 50,
-              "name": "VAS squad #3, soldier #2",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #3, soldier #3",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #3, soldier #4",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #3, soldier #5",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #3, soldier #6",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #3, soldier #7",
-              "unit_type": "soldier"
-            }
-          ]
-        },
-        {
-          "name": "VAS squad #4",
-          "units": [
-            {
-              "health": 50,
-              "name": "VAS squad #4, vehicle #1",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #4, vehicle #1, soldier #1",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #4, vehicle #2",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #4, vehicle #2, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #4, vehicle #2, soldier #2",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #4, vehicle #2, soldier #3",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #4, vehicle #3",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #4, vehicle #3, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #4, vehicle #3, soldier #2",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #4, soldier #1",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #4, soldier #2",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #4, soldier #3",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #4, soldier #4",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #4, soldier #5",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #4, soldier #6",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #4, soldier #7",
-              "unit_type": "soldier"
-            }
-          ]
-        },
-        {
-          "name": "VAS squad #5",
-          "units": [
-            {
-              "health": 50,
-              "name": "VAS squad #5, vehicle #1",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #5, vehicle #1, soldier #1",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #5, vehicle #2",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #5, vehicle #2, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #5, vehicle #2, soldier #2",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #5, vehicle #2, soldier #3",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #5, vehicle #3",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #5, vehicle #3, soldier #1",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #5, vehicle #4",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #5, vehicle #4, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #5, vehicle #4, soldier #2",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #5, vehicle #4, soldier #3",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #5, soldier #1",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #5, soldier #2",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #5, soldier #3",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #5, soldier #4",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #5, soldier #5",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #5, soldier #6",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #5, soldier #7",
-              "unit_type": "soldier"
-            }
-          ]
-        },
-        {
-          "name": "VAS squad #6",
-          "units": [
-            {
-              "health": 50,
-              "name": "VAS squad #6, vehicle #1",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #6, vehicle #1, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #6, vehicle #1, soldier #2",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #6, vehicle #1, soldier #3",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #6, vehicle #2",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #6, vehicle #2, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #6, vehicle #2, soldier #2",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #6, vehicle #2, soldier #3",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #6, vehicle #3",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #6, vehicle #3, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #6, vehicle #3, soldier #2",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #6, vehicle #3, soldier #3",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #6, soldier #1",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #6, soldier #2",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #6, soldier #3",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #6, soldier #4",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #6, soldier #5",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #6, soldier #6",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #6, soldier #7",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #6, soldier #8",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #6, soldier #9",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #6, soldier #10",
-              "unit_type": "soldier"
-            }
-          ]
-        },
-        {
-          "name": "VAS squad #7",
-          "units": [
-            {
-              "health": 50,
-              "name": "VAS squad #7, vehicle #1",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #7, vehicle #1, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #7, vehicle #1, soldier #2",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, vehicle #2",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #7, vehicle #2, soldier #1",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, vehicle #3",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #7, vehicle #3, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #7, vehicle #3, soldier #2",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, vehicle #4",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #7, vehicle #4, soldier #1",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, vehicle #5",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #7, vehicle #5, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #7, vehicle #5, soldier #2",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #7, vehicle #5, soldier #3",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, soldier #1",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, soldier #2",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, soldier #3",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, soldier #4",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, soldier #5",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, soldier #6",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, soldier #7",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, soldier #8",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, soldier #9",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #7, soldier #10",
-              "unit_type": "soldier"
-            }
-          ]
-        },
-        {
-          "name": "VAS squad #8",
-          "units": [
-            {
-              "health": 50,
-              "name": "VAS squad #8, vehicle #1",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #8, vehicle #1, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #8, vehicle #1, soldier #2",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #8, vehicle #2",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #8, vehicle #2, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #8, vehicle #2, soldier #2",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #8, vehicle #2, soldier #3",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #8, vehicle #3",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #8, vehicle #3, soldier #1",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #8, vehicle #3, soldier #2",
-                  "unit_type": "soldier"
-                },
-                {
-                  "health": 50,
-                  "name": "VAS squad #8, vehicle #3, soldier #3",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #8, vehicle #4",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #8, vehicle #4, soldier #1",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #8, vehicle #5",
-              "operators": [
-                {
-                  "health": 50,
-                  "name": "VAS squad #8, vehicle #5, soldier #1",
-                  "unit_type": "soldier"
-                }
-              ],
-              "unit_type": "vehicle"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #8, soldier #1",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #8, soldier #2",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #8, soldier #3",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #8, soldier #4",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #8, soldier #5",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #8, soldier #6",
-              "unit_type": "soldier"
-            },
-            {
-              "health": 50,
-              "name": "VAS squad #8, soldier #7",
+              "name": "USA squad #3, soldier #7",
               "unit_type": "soldier"
             }
           ]
         }
       ],
       "strategy": "weakest"
+    },
+    {
+      "name": "Ukraine",
+      "squads": [
+        {
+          "name": "Ukraine squad #1",
+          "units": [
+            {
+              "health": 293,
+              "name": "Ukraine squad #1, vehicle #1",
+              "operators": [
+                {
+                  "health": 76,
+                  "name": "Ukraine squad #1, vehicle #1, soldier #1",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 58,
+                  "name": "Ukraine squad #1, vehicle #1, soldier #2",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 57,
+                  "name": "Ukraine squad #1, vehicle #1, soldier #3",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 382,
+              "name": "Ukraine squad #1, vehicle #2",
+              "operators": [
+                {
+                  "health": 50,
+                  "name": "Ukraine squad #1, vehicle #2, soldier #1",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 70,
+                  "name": "Ukraine squad #1, vehicle #2, soldier #2",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 95,
+                  "name": "Ukraine squad #1, vehicle #2, soldier #3",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 56,
+              "name": "Ukraine squad #1, soldier #1",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 62,
+              "name": "Ukraine squad #1, soldier #2",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 65,
+              "name": "Ukraine squad #1, soldier #3",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 70,
+              "name": "Ukraine squad #1, soldier #4",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 83,
+              "name": "Ukraine squad #1, soldier #5",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 81,
+              "name": "Ukraine squad #1, soldier #6",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 51,
+              "name": "Ukraine squad #1, soldier #7",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 82,
+              "name": "Ukraine squad #1, soldier #8",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 59,
+              "name": "Ukraine squad #1, soldier #9",
+              "unit_type": "soldier"
+            }
+          ]
+        },
+        {
+          "name": "Ukraine squad #2",
+          "units": [
+            {
+              "health": 273,
+              "name": "Ukraine squad #2, vehicle #1",
+              "operators": [
+                {
+                  "health": 55,
+                  "name": "Ukraine squad #2, vehicle #1, soldier #1",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 71,
+                  "name": "Ukraine squad #2, vehicle #1, soldier #2",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 243,
+              "name": "Ukraine squad #2, vehicle #2",
+              "operators": [
+                {
+                  "health": 75,
+                  "name": "Ukraine squad #2, vehicle #2, soldier #1",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 65,
+                  "name": "Ukraine squad #2, vehicle #2, soldier #2",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 72,
+                  "name": "Ukraine squad #2, vehicle #2, soldier #3",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 53,
+              "name": "Ukraine squad #2, soldier #1",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 87,
+              "name": "Ukraine squad #2, soldier #2",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 96,
+              "name": "Ukraine squad #2, soldier #3",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 85,
+              "name": "Ukraine squad #2, soldier #4",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 74,
+              "name": "Ukraine squad #2, soldier #5",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 86,
+              "name": "Ukraine squad #2, soldier #6",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 98,
+              "name": "Ukraine squad #2, soldier #7",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 95,
+              "name": "Ukraine squad #2, soldier #8",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 69,
+              "name": "Ukraine squad #2, soldier #9",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 67,
+              "name": "Ukraine squad #2, soldier #10",
+              "unit_type": "soldier"
+            }
+          ]
+        },
+        {
+          "name": "Ukraine squad #3",
+          "units": [
+            {
+              "health": 391,
+              "name": "Ukraine squad #3, vehicle #1",
+              "operators": [
+                {
+                  "health": 80,
+                  "name": "Ukraine squad #3, vehicle #1, soldier #1",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 99,
+                  "name": "Ukraine squad #3, vehicle #1, soldier #2",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 64,
+                  "name": "Ukraine squad #3, vehicle #1, soldier #3",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 387,
+              "name": "Ukraine squad #3, vehicle #2",
+              "operators": [
+                {
+                  "health": 99,
+                  "name": "Ukraine squad #3, vehicle #2, soldier #1",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 399,
+              "name": "Ukraine squad #3, vehicle #3",
+              "operators": [
+                {
+                  "health": 89,
+                  "name": "Ukraine squad #3, vehicle #3, soldier #1",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 84,
+                  "name": "Ukraine squad #3, vehicle #3, soldier #2",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 96,
+              "name": "Ukraine squad #3, soldier #1",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 72,
+              "name": "Ukraine squad #3, soldier #2",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 67,
+              "name": "Ukraine squad #3, soldier #3",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 85,
+              "name": "Ukraine squad #3, soldier #4",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 64,
+              "name": "Ukraine squad #3, soldier #5",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 91,
+              "name": "Ukraine squad #3, soldier #6",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 94,
+              "name": "Ukraine squad #3, soldier #7",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 71,
+              "name": "Ukraine squad #3, soldier #8",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 57,
+              "name": "Ukraine squad #3, soldier #9",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 65,
+              "name": "Ukraine squad #3, soldier #10",
+              "unit_type": "soldier"
+            }
+          ]
+        },
+        {
+          "name": "Ukraine squad #4",
+          "units": [
+            {
+              "health": 306,
+              "name": "Ukraine squad #4, vehicle #1",
+              "operators": [
+                {
+                  "health": 73,
+                  "name": "Ukraine squad #4, vehicle #1, soldier #1",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 352,
+              "name": "Ukraine squad #4, vehicle #2",
+              "operators": [
+                {
+                  "health": 58,
+                  "name": "Ukraine squad #4, vehicle #2, soldier #1",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 368,
+              "name": "Ukraine squad #4, vehicle #3",
+              "operators": [
+                {
+                  "health": 76,
+                  "name": "Ukraine squad #4, vehicle #3, soldier #1",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 56,
+              "name": "Ukraine squad #4, soldier #1",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 57,
+              "name": "Ukraine squad #4, soldier #2",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 70,
+              "name": "Ukraine squad #4, soldier #3",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 69,
+              "name": "Ukraine squad #4, soldier #4",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 79,
+              "name": "Ukraine squad #4, soldier #5",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 99,
+              "name": "Ukraine squad #4, soldier #6",
+              "unit_type": "soldier"
+            }
+          ]
+        }
+      ],
+      "strategy": "weakest"
+    },
+    {
+      "name": "Italy",
+      "squads": [
+        {
+          "name": "Italy squad #1",
+          "units": [
+            {
+              "health": 244,
+              "name": "Italy squad #1, vehicle #1",
+              "operators": [
+                {
+                  "health": 71,
+                  "name": "Italy squad #1, vehicle #1, soldier #1",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 378,
+              "name": "Italy squad #1, vehicle #2",
+              "operators": [
+                {
+                  "health": 88,
+                  "name": "Italy squad #1, vehicle #2, soldier #1",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 84,
+              "name": "Italy squad #1, soldier #1",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 58,
+              "name": "Italy squad #1, soldier #2",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 55,
+              "name": "Italy squad #1, soldier #3",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 78,
+              "name": "Italy squad #1, soldier #4",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 52,
+              "name": "Italy squad #1, soldier #5",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 82,
+              "name": "Italy squad #1, soldier #6",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 92,
+              "name": "Italy squad #1, soldier #7",
+              "unit_type": "soldier"
+            }
+          ]
+        },
+        {
+          "name": "Italy squad #2",
+          "units": [
+            {
+              "health": 386,
+              "name": "Italy squad #2, vehicle #1",
+              "operators": [
+                {
+                  "health": 59,
+                  "name": "Italy squad #2, vehicle #1, soldier #1",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 52,
+                  "name": "Italy squad #2, vehicle #1, soldier #2",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 67,
+              "name": "Italy squad #2, soldier #1",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 88,
+              "name": "Italy squad #2, soldier #2",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 99,
+              "name": "Italy squad #2, soldier #3",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 66,
+              "name": "Italy squad #2, soldier #4",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 89,
+              "name": "Italy squad #2, soldier #5",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 90,
+              "name": "Italy squad #2, soldier #6",
+              "unit_type": "soldier"
+            }
+          ]
+        },
+        {
+          "name": "Italy squad #3",
+          "units": [
+            {
+              "health": 336,
+              "name": "Italy squad #3, vehicle #1",
+              "operators": [
+                {
+                  "health": 82,
+                  "name": "Italy squad #3, vehicle #1, soldier #1",
+                  "unit_type": "soldier"
+                },
+                {
+                  "health": 67,
+                  "name": "Italy squad #3, vehicle #1, soldier #2",
+                  "unit_type": "soldier"
+                }
+              ],
+              "unit_type": "vehicle"
+            },
+            {
+              "health": 88,
+              "name": "Italy squad #3, soldier #1",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 68,
+              "name": "Italy squad #3, soldier #2",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 88,
+              "name": "Italy squad #3, soldier #3",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 87,
+              "name": "Italy squad #3, soldier #4",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 77,
+              "name": "Italy squad #3, soldier #5",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 66,
+              "name": "Italy squad #3, soldier #6",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 69,
+              "name": "Italy squad #3, soldier #7",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 73,
+              "name": "Italy squad #3, soldier #8",
+              "unit_type": "soldier"
+            },
+            {
+              "health": 50,
+              "name": "Italy squad #3, soldier #9",
+              "unit_type": "soldier"
+            }
+          ]
+        }
+      ],
+      "strategy": "random"
     }
   ]
 }
