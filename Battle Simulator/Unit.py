@@ -2,6 +2,10 @@ from abc import ABCMeta, abstractmethod
 import Clock
 
 
+# target.take_damage()
+# self._recharge_to = self.clock.time() + 1000
+# statistics    ---  harmonic-mcan
+
 class Unit(metaclass=ABCMeta):
     @abstractmethod
     def attack(self, target):
@@ -31,3 +35,7 @@ class Unit(metaclass=ABCMeta):
     def recharge(self):
         pass
 
+    @property
+    @abstractmethod
+    def members(self):
+        pass

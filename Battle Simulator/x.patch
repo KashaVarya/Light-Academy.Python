@@ -1,0 +1,10 @@
+--- gen_data.py.old	2018-05-19 11:23:47.361119982 +0300
++++ gen_data.py	2018-05-19 11:24:06.604694659 +0300
+@@ -55,6 +55,7 @@
+     for army_name in army_names:
+         yield {
+             "name": army_name,
++            "strategy": random.choice(["random", "strongest", "weakest"]),
+             "squads": list(generate_squads(
+                 army_name,
+                 squads_mn, squads_mx,
