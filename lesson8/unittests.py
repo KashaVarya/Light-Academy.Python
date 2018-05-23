@@ -26,7 +26,7 @@ class StringTestCase(unittest.TestCase):
 def test_profile(mock_md5):
     mock_md5.return_values = "some_hash"
     mock_md5.assert_called_one_with("some param")
-    mock_md5.calls
+    mock_md5.calls()
 
     Mock(spec=SomeClass)
 
