@@ -22,3 +22,7 @@ class StringCalculatorTestCase(unittest.TestCase):
     def test_nl(self):
         result = StringCalculator().add("9\n67")
         self.assertEqual(result, 76)
+
+    def test_comma_nl(self):
+        result = StringCalculator().add("1,2\n5\n3,5")
+        self.assertEqual(result, 16)
