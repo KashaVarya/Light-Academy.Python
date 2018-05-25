@@ -34,3 +34,7 @@ class StringCalculatorTestCase(unittest.TestCase):
     def test_big_num(self):
         result = StringCalculator().add("10 444 1344 1000 4 1001")
         self.assertEqual(result, 1458)
+
+    def test_delimiter(self):
+        result = StringCalculator().add("//#\n1#2#10")
+        self.assertEqual(result, 13)
