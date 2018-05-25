@@ -38,3 +38,7 @@ class StringCalculatorTestCase(unittest.TestCase):
     def test_delimiter(self):
         result = StringCalculator().add("//#\n1#2#10")
         self.assertEqual(result, 13)
+
+    def test_delimiters(self):
+        result = StringCalculator().add("//###\n1###2###10")
+        self.assertEqual(result, 13)

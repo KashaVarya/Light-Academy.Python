@@ -6,10 +6,10 @@ class StringCalculator:
         if istring == "":
             return 0
 
-        if istring[:2] == "//" and istring[3] == "\n":
-            istring = istring.replace(istring[2], " ")
+        if istring[:2] == "//":
+            index = istring.find("\n")
+            istring = istring.replace(istring[2:index], " ")
             istring = istring[4:]
-
 
         istring = istring.replace(",", " ")
         istring = istring.replace("\n", " ")
@@ -25,6 +25,3 @@ class StringCalculator:
             return neg_str[:-1]
 
         return res
-
-
-# StringCalculator().add(" ")
