@@ -30,3 +30,7 @@ class StringCalculatorTestCase(unittest.TestCase):
     def test_negative(self):
         result = StringCalculator().add("1,-3,-4")
         self.assertEqual(result, "Отрицательные числа запрещены: -3,-4")
+
+    def test_big_num(self):
+        result = StringCalculator().add("10 444 1344 1000 4 1001")
+        self.assertEqual(result, 1458)

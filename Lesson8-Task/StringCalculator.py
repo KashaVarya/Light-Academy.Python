@@ -13,7 +13,7 @@ class StringCalculator:
             num = int(num)
             if num < 0:
                 neg_str += (str(num) + ",")
-            else:
+            elif num <= 1000:
                 res += int(num)
 
         if neg_str[-1:] == ",":
