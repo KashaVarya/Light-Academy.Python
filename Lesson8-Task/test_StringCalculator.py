@@ -14,3 +14,7 @@ class StringCalculatorTestCase(unittest.TestCase):
     def test_only_one(self):
         result = StringCalculator().add("3", " ")
         self.assertEqual(result, 3)
+
+    def test_comma(self):
+        result = StringCalculator().add("12,15,4", ",")
+        self.assertEqual(result, 31)
