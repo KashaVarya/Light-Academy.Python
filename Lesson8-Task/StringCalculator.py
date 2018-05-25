@@ -1,11 +1,14 @@
 class StringCalculator:
-    def add(self, string, delimiter):
+    def add(self, istring):
         res = 0
 
-        if string == "":
+        if istring == "":
             return 0
 
-        for num in string.split(delimiter):
+        istring = istring.replace(",", " ")
+        print(istring)
+
+        for num in istring.split(" "):
             res += int(num)
 
         return res
