@@ -3,7 +3,7 @@ class StringCalculator:
         res = 0
 
         if string == "":
-            return 0d
+            return 0
 
         for num in string.split(delimiter):
             res += int(num)

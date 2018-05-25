@@ -10,3 +10,7 @@ class StringCalculatorTestCase(unittest.TestCase):
     def test_empty(self):
         result = StringCalculator().add("", " ")
         self.assertEqual(result, 0)
+
+    def test_only_one(self):
+        result = StringCalculator().add("3", " ")
+        self.assertEqual(result, 3)
