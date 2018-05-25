@@ -6,7 +6,7 @@ class StringCalculator:
             return 0
 
         istring = istring.replace(",", " ")
-        print(istring)
+        istring = istring.replace("\n", " ")
 
         for num in istring.split(" "):
             res += int(num)
