@@ -62,6 +62,24 @@ class Shortly(object):
         self.redis.set('reverse-url:' + url, short_id)
         return short_id
 
+    def on_follow_short_link(self, request, short_id):
+        link_target = self.redis.get('url-target:' + short_id)
+        if link_target is None:
+            raise NotFound()
+        self.redis.incr('click-count:' + short_id)
+        return redirect(link_target)
+
+    def on_short_link_details(self, request, short_id):
+        link_target = self.redis.get('url-target:' + short_id)
+        if link_target is None:
+            raise NotFound()
+        click_count = int(self.redis.get('click-count:' + short_id) or 0)
+        return self.render_template('short_link_details.html',
+                                    link_target=link_target,
+                                    short_id=short_id,
+                                    click_count=click_count
+                                    )
+
 
 def create_app(redis_host='localhost', redis_port=6379, with_static=True):
     app = Shortly({
@@ -77,7 +95,7 @@ def create_app(redis_host='localhost', redis_port=6379, with_static=True):
 
 def is_valid_url(url):
     parts = urllib.parse.urlparse(url)
-    return parts.scheme in ('http', 'http')
+    return parts.scheme in ('http', 'https')
 
 
 def base36_encode(number):
