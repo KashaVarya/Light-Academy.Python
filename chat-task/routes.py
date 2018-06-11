@@ -1,6 +1,5 @@
-from chat.views import Chatlist, WebSoket
+from chat.views import ChatList, WebSocket
 from auth.views import Login, SignIn, SignOut
-
 
 
 routes = [
