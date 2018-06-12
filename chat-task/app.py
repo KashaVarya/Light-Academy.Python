@@ -36,11 +36,6 @@ async def init(loop):
         db_handler,
 #         aiohttp_debugtoolbar.middleware,
     ])
-    app['websockets'] = []
-    handler = app.make_handler()
-    if DEBUG:
-        aiohttp_debugtoolbar.setup(app)
-    aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader('templates'))
 
     # route part
     for route in routes:
@@ -52,6 +47,12 @@ async def init(loop):
     app.db = app.client[MONGO_DB_NAME]
     # end db connect
     app.on_shutdown.append(on_shutdown)
+
+    app['websockets'] = []
+    handler = app.make_handler()
+    if DEBUG:
+        aiohttp_debugtoolbar.setup(app)
+    aiohttp_jinja2.setup(app, loader=jinja2.FileSystemLoader('templates'))
 
     serv_generator = loop.create_server(handler, SITE_HOST, SITE_PORT)
     return serv_generator, handler, app

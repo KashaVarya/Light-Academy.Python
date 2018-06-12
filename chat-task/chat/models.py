@@ -2,7 +2,7 @@ from datetime import datetime
 from settings import MESSAGE_COLLECTION
 
 
-class Message():
+class Message:
 
     def __init__(self, db, **kwargs):
         self.collection = db[MESSAGE_COLLECTION]

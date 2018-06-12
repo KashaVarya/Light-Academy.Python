@@ -30,7 +30,7 @@ class Login(web.View):
         session = await get_session(self.request)
         if session.get('user'):
             redirect(self.request, 'main')
-        return {'conten': 'Please enter login or email'}
+        return {'content': 'Please enter login or email'}
 
     async def post(self):
         data = await self.request.post()
@@ -51,7 +51,7 @@ class SignIn(web.View):
         session = await get_session(self.request)
         if session.get('user'):
             redirect(self.request, 'main')
-        return {'conten': 'Please enter your data'}
+        return {'content': 'Please enter your data'}
 
     async def post(self, **kw):
         data = await self.request.post()

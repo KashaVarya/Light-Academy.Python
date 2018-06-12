@@ -1,6 +1,5 @@
 from aiohttp import web
 from aiohttp_session import get_session
-from settings import *
 
 
 async def db_handler(app, handler):
@@ -30,7 +29,7 @@ async def authorize(app, handler):
         elif check_path(request.path):
             url = request.app.router['login'].url()
             raise web.HTTPFound(url)
-            return handler(request)
+            # return handler(request)
         else:
             return await handler(request)
 

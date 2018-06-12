@@ -1,7 +1,7 @@
-aiohttp
-aiohttp_debugtoolbar
-aiohttp_jinja2
-aiohttp_session[secure]
+aiohttp==1.3.5
+aiohttp_debugtoolbar==0.3.0
+aiohttp_jinja2==0.13.0
+aiohttp_session[secure]==0.8.0
 cchardet
 cffi
 cryptography
