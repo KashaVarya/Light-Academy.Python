@@ -17,7 +17,7 @@
         {% endfor %}
     </ul>
 
-    <form method="post" action="/tasks/create">
+    <form method="post">
         {% csrf_token %}
         <!--<input type="checkbox", name="checked"/>-->
         <!--<input type="text", name="text"/>-->
@@ -57,8 +57,6 @@
         <!--{{form.text}}-->
         <button type="submit">Submit</button>
     </form>
-
-
 
 </body>
 </html>
