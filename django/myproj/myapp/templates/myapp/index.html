@@ -25,21 +25,21 @@
             <!--Save-->
         <!--</button>-->
 
-        <!--{{form.as_p}}-->
-        {%for field in form%} <!--итерируемся по объектам формы-->
-            <div class="wrapper">
-                {{field.label_tag}}
-                {{field}}
-                <!--{{field.errors}}-->
-                <ul class="cls">
-                    {% for error in fiels.errors%}
-                    <li class="...">
-                        {{error | escape}}
-                    </li>
-                    {%endfor%}
-                </ul>
-            </div>
-        {%endfor%}
+        {{form.as_p}}
+        <!--{%for field in form%} &lt;!&ndash;итерируемся по объектам формы&ndash;&gt;-->
+            <!--<div class="wrapper">-->
+                <!--{{field.label_tag}}-->
+                <!--{{field}}-->
+                <!--&lt;!&ndash;{{field.errors}}&ndash;&gt;-->
+                <!--<ul class="cls">-->
+                    <!--{% for error in fiels.errors%}-->
+                    <!--<li class="...">-->
+                        <!--{{error | escape}}-->
+                    <!--</li>-->
+                    <!--{%endfor%}-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--{%endfor%}-->
 
         <!--<label for="{{form.text.id_for_label}}"></label>-->
         <!--<input id="{{form.text.id_for_label}}" value="{{form.text.value}}"-->
