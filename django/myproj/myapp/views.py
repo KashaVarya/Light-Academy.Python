@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Task
-from .forms import TaskForm
+from .forms import TaskForm, TaskModelForm
 
 
 # Create your views here.
@@ -9,18 +9,19 @@ from .forms import TaskForm
 
 def index(request):
     tasks = Task.objects.all()
-    return render(request, 'myapp/index.html', {'tasks': tasks, 'form': TaskForm})
+    return render(request, 'myapp/index.html', {'tasks': tasks, 'form': TaskModelForm(initial={'text': 'start_value'})})
 
 
 def create_task(request):
     if request.method == 'POST':
         # task = Task(text=request.POST.get('text'), checked=bool(request.POST.get('checked', False)))
-        form = TaskForm(request.POST)
+        form = TaskModelForm(request.POST)
         if form.is_valid():
-            Task.objects.create(
-                text=form.cleaned_data['text'],
-                checked=form.cleaned_data.get('checked', False)
-            )
+            form.save()
+            # Task.objects.create(
+            #     text=form.cleaned_data['text'],
+            #     checked=form.cleaned_data.get('checked', False)
+            # )
             return redirect('/tasks')
         return redirect('/tasks')
     # task.save()
@@ -32,4 +33,13 @@ def detail(request, pk):
         task = Task.objects.get(id=pk)
     except Task.DoesNotExist:
         print("Error")
-    return render(request, 'myapp/detail.html', {'task': task})
+
+    form = TaskModelForm(instance=task)
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            redirect('tasks/{}'.format(task.pk))
+        else:
+            form = TaskModelForm()
+    return render(request, 'myapp/detail.html', {'task': task, 'form': form})

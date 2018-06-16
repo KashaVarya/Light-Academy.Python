@@ -16,6 +16,7 @@
         </li>
         {% endfor %}
     </ul>
+
     <form method="post" action="/tasks/create">
         {% csrf_token %}
         <!--<input type="checkbox", name="checked"/>-->
@@ -40,18 +41,24 @@
             </div>
         {%endfor%}
 
-        <label for="{{form.text.id_for_label}}"></label>
-        <input id="{{form.text.id_for_label}}" value="{{form.text.value}}"
-               {% if form.text.field.max_length%} max_length="{{field}}" {%endif%} name="{{form.text.html_name}}">
+        <!--<label for="{{form.text.id_for_label}}"></label>-->
+        <!--<input id="{{form.text.id_for_label}}" value="{{form.text.value}}"-->
+               <!--{% if form.text.field.max_length %} maxlength="{{form.text.field.max_length}}" {% endif %} name="{{form.text.html_name}}">-->
 
-        {% if field.name == "checked"%}
-        pp
-        {%else%}
-        ss
-        {%endif%}
+        <!--{% if field.name == "checked" %}-->
+        <!--pp-->
+        <!--{% else %}-->
+        <!--ss-->
+        <!--{% endif %}-->
+
+        <!--{% for hidden_field in form.hidden_fields %}-->
+        <!--{% endfor %}-->
 
         <!--{{form.text}}-->
         <button type="submit">Submit</button>
     </form>
+
+
+
 </body>
 </html>

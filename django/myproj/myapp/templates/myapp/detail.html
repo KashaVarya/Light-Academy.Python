@@ -5,7 +5,14 @@
     <title>Detail Task</title>
 </head>
 <body>
-    {{task.text}}
-    {{task.checked}}
+    <!--{{task.text}}-->
+    <!--{{task.checked}}-->
+
+    <form method="POST">
+        {% csrf_token %}
+        {{form}}
+        <button type="submit">Submit</button>
+    </form>
+
 </body>
 </html>
