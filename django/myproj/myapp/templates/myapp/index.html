@@ -18,11 +18,40 @@
     </ul>
     <form method="post" action="/tasks/create">
         {% csrf_token %}
-        <input type="checkbox", name="checked"/>
-        <input type="text", name="text"/>
-        <button type="submit">
-            Save
-        </button>
+        <!--<input type="checkbox", name="checked"/>-->
+        <!--<input type="text", name="text"/>-->
+        <!--<button type="submit">-->
+            <!--Save-->
+        <!--</button>-->
+
+        <!--{{form.as_p}}-->
+        {%for field in form%} <!--итерируемся по объектам формы-->
+            <div class="wrapper">
+                {{field.label_tag}}
+                {{field}}
+                <!--{{field.errors}}-->
+                <ul class="cls">
+                    {% for error in fiels.errors%}
+                    <li class="...">
+                        {{error | escape}}
+                    </li>
+                    {%endfor%}
+                </ul>
+            </div>
+        {%endfor%}
+
+        <label for="{{form.text.id_for_label}}"></label>
+        <input id="{{form.text.id_for_label}}" value="{{form.text.value}}"
+               {% if form.text.field.max_length%} max_length="{{field}}" {%endif%} name="{{form.text.html_name}}">
+
+        {% if field.name == "checked"%}
+        pp
+        {%else%}
+        ss
+        {%endif%}
+
+        <!--{{form.text}}-->
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>
