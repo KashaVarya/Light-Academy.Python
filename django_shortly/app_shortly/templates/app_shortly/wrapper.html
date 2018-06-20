@@ -1,0 +1,17 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} | shortly</title>
+    <link rel="stylesheet" href="{% static "app_shortly/style.css" %}" type="text/css">
+</head>
+<body>
+    <div class="box">
+      <h1><a href="/shortly">shortly</a></h1>
+        <p class="tagline">Shortly is a URL shortener written with Werkzeug</p>
+      {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

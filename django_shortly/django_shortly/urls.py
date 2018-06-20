@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+from app_shortly import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^shortly/$', views.new_url),
+    url(r'^shortly/(.*)\+$', views.short_link_details),
+    url(r'^shortly/(.*)$', views.follow_short_link)
 ]
