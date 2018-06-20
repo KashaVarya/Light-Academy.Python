@@ -1,0 +1,14 @@
+#subscribe {
+    height: 500px;
+    background: AntiqueWhite;
+    overflow: auto;
+}
+
+#submit {
+    background-color: #FF4074;
+    border-color: red;
+}
+
+#message {
+    width: calc(100% - 70px);
+}

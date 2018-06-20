@@ -2,6 +2,18 @@ from aiohttp import web
 from aiohttp_session import get_session
 
 
+async def db_handler(app, handler):
+    async def middleware(request):
+        if request.path.startswith('/static/') or request.path.startswith('/_debugtoolbar'):
+            response = await handler(request)
+            return response
+
+        request.db = app.db
+        response = await handler(request)
+        return response
+    return middleware
+
+
 async def authorize(app, handler):
     async def middleware(request):
         def check_path(path):
@@ -17,20 +29,8 @@ async def authorize(app, handler):
         elif check_path(request.path):
             url = request.app.router['login'].url()
             raise web.HTTPFound(url)
-            return handler(request)
+            # return handler(request)
         else:
             return await handler(request)
 
-    return middleware
-
-
-async def db_handler(app, handler):
-    async def middleware(request):
-        if request.path.startswith('/static/') or request.path.startswith('/_debugtoolbar'):
-            response = await handler(request)
-            return response
-
-        request.db = app.db
-        response = await handler(request)
-        return response
     return middleware
