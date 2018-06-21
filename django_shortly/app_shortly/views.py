@@ -32,7 +32,10 @@ def new_url(request):
             cur_url.save()
 
             return redirect('/shortly/%s+' % cur_url.short_url)
-    return render(request, 'app_shortly/new_url.html', {'error': error, 'url': url})
+
+    popular = Urls.objects.order_by('click_count').reverse()[:5]
+
+    return render(request, 'app_shortly/new_url.html', {'error': error, 'url': url, 'popular': popular})
 
 
 def follow_short_link(request, short_id):

@@ -3,14 +3,22 @@
 {% block title %}Create New Short URL{% endblock %}
 
 {% block content %}
-  <h2>Submit URL</h2>
-  <form action="" method="post">
-  {%  csrf_token %}
+    <h2>Submit URL</h2>
+    <form action="" method="post">
+    {%  csrf_token %}
     {% if error %}
-      <p class="error"><strong>Error:</strong> {{ error }}
+        <p class="error"><strong>Error:</strong> {{ error }}
     {% endif %}
     <p>URL:
-      <input type="text" name="url" value="{{ url }}" class="urlinput">
-      <input type="submit" value="Shorten">
-  </form>
+        <input type="text" name="url" value="{{ url }}" class="urlinput">
+        <input type="submit" value="Shorten">
+    </form>
+
+    <br>
+    <h2>Most popular links</h2>
+    <ol>
+        {% for link in popular %}
+        <li><a href="{{ link.short_url }}">{{ link.short_url }}</a></li>
+        {% endfor %}
+    </ol>
 {% endblock %}
