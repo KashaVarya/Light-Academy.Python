@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 import urllib.parse
 from .models import UrlObject
 from django.views.generic import ListView, DetailView, RedirectView, View
+from .forms import UrlForm
 
 
 # Create your views here.
@@ -14,8 +15,12 @@ class UrlObjectListView(ListView):
         # Получаем базовую реализацию контекста
         context = super(UrlObjectListView, self).get_context_data(**kwargs)
         # Добавляем новую переменную к контексту и инициализируем ее некоторым значением
-        context['error'] = None
-        context['url'] = ''
+        error = None
+        if 'error' in self.request.session:
+            error = self.request.session['error']
+            del self.request.session['error']
+        context['error'] = error
+        context['form'] = UrlForm(initial={'full_url': ''})
         return context
 
     def get_queryset(self):
@@ -57,6 +62,7 @@ class SaveUrlView(View):
 
         if not is_valid_url(url):
             error = 'Please enter a valid URL'
+            request.session['error'] = error
             return redirect('/shortly/')
         else:
             cur_url = UrlObject(full_url=url, short_url="")

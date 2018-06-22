@@ -4,14 +4,20 @@
 
 {% block content %}
     <h2>Submit URL</h2>
+
     <form action="/shortly/save_url" method="post">
-    {%  csrf_token %}
-    {% if error %}
-        <p class="error"><strong>Error:</strong> {{ error }}
-    {% endif %}
-    <p>URL:
-        <input type="text" name="url" value="{{ url }}" class="urlinput">
-        <input type="submit" value="Shorten">
+        {%  csrf_token %}
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{ error }}</p>
+        {% endif %}
+
+        <p>
+            {% for field in form %}
+                {{ field.label_tag }}
+                <input type="text" name="url" value="{{ field.value }}" class="urlinput">
+            {% endfor %}
+            <input type="submit" value="Shorten">
+        </p>
     </form>
 
     <br>
