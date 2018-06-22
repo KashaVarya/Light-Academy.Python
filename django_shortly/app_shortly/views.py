@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 import urllib.parse
 from .models import UrlObject
-from django.views.generic import ListView, DetailView, RedirectView
+from django.views.generic import ListView, DetailView, RedirectView, View
 
 
 # Create your views here.
@@ -39,8 +39,8 @@ class UrlObjectRedirectView(RedirectView):
         return cur_url.full_url
 
 
-def new_url(request):
-    if request.method == 'POST':
+class SaveUrlView(View):
+    def post(self, request):
         url = request.POST.get('url')
 
         try:
@@ -57,14 +57,13 @@ def new_url(request):
 
         if not is_valid_url(url):
             error = 'Please enter a valid URL'
+            return redirect('/shortly/')
         else:
             cur_url = UrlObject(full_url=url, short_url="")
             cur_url.short_url = short(str(cur_url.id))
             cur_url.save()
 
             return redirect('/shortly/%s+' % cur_url.short_url)
-
-    return redirect('/shortly/')
 
 
 def is_valid_url(url):
