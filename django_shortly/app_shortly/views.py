@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 import urllib.parse
 from .models import UrlObject
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, RedirectView
 
 
 # Create your views here.
@@ -30,6 +30,15 @@ class UrlObjectDetailView(DetailView):
         return UrlObject.objects.filter(short_url=pk).get()
 
 
+class UrlObjectRedirectView(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        pk = kwargs['pk']
+        cur_url = UrlObject.objects.get(short_url=pk)
+        cur_url.click_count += 1
+        cur_url.save()
+        return cur_url.full_url
+
+
 def new_url(request):
     if request.method == 'POST':
         url = request.POST.get('url')
@@ -56,16 +65,6 @@ def new_url(request):
             return redirect('/shortly/%s+' % cur_url.short_url)
 
     return redirect('/shortly/')
-
-
-def follow_short_link(request, short_id):
-    try:
-        cur_url = UrlObject.objects.get(short_url=short_id)
-        cur_url.click_count += 1
-        cur_url.save()
-        return redirect(cur_url.full_url)
-    except UrlObject.DoesNotExist:
-        print("Not Found")
 
 
 def is_valid_url(url):
