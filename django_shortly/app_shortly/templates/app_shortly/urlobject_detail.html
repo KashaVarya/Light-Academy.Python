@@ -1,0 +1,13 @@
+{% extends "app_shortly/wrapper.html" %}
+
+{% block title %}Details about /{{ urlobject.short_url }}{% endblock %}
+
+{% block content %}
+  <h2><a href="/shortly/{{ urlobject.short_url }}">/{{ urlobject.short_url }}</a></h2>
+  <dl>
+    <dt>Full link
+    <dd class="link"><div>{{ urlobject.full_url }}</div>
+    <dt>Click count:
+    <dd>{{ urlobject.click_count }}
+  </dl>
+{% endblock %}

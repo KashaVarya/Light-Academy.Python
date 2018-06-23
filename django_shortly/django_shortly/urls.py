@@ -21,7 +21,8 @@ from app_shortly import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^shortly/$', views.new_url),
-    url(r'^shortly/(.*)\+$', views.short_link_details),
-    url(r'^shortly/(.*)$', views.follow_short_link)
+    url(r'^shortly/save_url$', views.SaveUrlView.as_view()),
+    url(r'^shortly/$', views.UrlObjectListView.as_view()),
+    url(r'^shortly/(?P<pk>\d+)\+$', views.UrlObjectDetailView.as_view()),
+    url(r'^shortly/(?P<pk>\d+)$', views.UrlObjectRedirectView.as_view())
 ]

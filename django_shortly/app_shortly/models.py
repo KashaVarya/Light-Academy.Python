@@ -4,7 +4,7 @@ import uuid
 # Create your models here.
 
 
-class Urls(models.Model):
+class UrlObject(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     full_url = models.CharField(max_length=250)
     short_url = models.CharField(max_length=100)
