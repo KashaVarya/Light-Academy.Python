@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'movienews_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -76,12 +77,14 @@ WSGI_APPLICATION = 'movienews.wsgi.application'
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'django_db',
-    'USER': secret.user_name,
-    'PASSWORD': secret.password,
-    'HOST': '127.0.0.1',
-    'PORT': '5432',
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django_db',
+        'USER': secret.user_name,
+        'PASSWORD': secret.password,
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
 }
 
 
