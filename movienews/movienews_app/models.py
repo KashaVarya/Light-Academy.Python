@@ -47,8 +47,8 @@ class ActorModel(models.Model):
 class ReviewModel(models.Model):
     id = models.AutoField()
     text = models.TextField()
-    user = models.ForeignKey('UserModel', on_delete=models.SET_NULL)
-    movie = models.ForeignKey(MovieModel, on_delete=models.SET_NULL)
+    user = models.ForeignKey('UserModel', on_delete=models.SET_NULL, null=True, blank=True)
+    movie = models.ForeignKey(MovieModel, on_delete=models.SET_NULL, null=True, blank=True)
 
 
 class UserModel(models.Model):
