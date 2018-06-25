@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from movienews_app import views
+
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
+    #url(r'^$', views.index),
 ]
