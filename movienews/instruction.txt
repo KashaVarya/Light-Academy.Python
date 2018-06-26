@@ -1,0 +1,81 @@
+
+# Получение ид популярных фильмов и некоторый атрибутов
+
+def index(request):
+    tmdb.API_KEY = secret.API_KEY
+    movies_api = tmdb.Movies()
+
+    for i in range(1, 13):
+        popular = movies_api.popular(page=i)
+
+        for j in popular['results']:
+            m = tmdb.Movies(j['id'])
+            response = m.info()
+
+            print(j['id'])
+
+            mov = models.MovieModel(id=j['id'],
+                                    title=m.title,
+                                    date=m.release_date,
+                                    duration=m.runtime,
+                                    rating=m.vote_average,
+                                    summary=m.overview)
+            try:
+                mov.country = m.production_countries[0]['name']
+            except IndexError:
+                mov.country = None
+            mov.save()
+
+    movies = models.MovieModel.objects.all()
+
+    return render(request, 'movienews_app/index.html', {'movies': movies})
+
+
+# Получение ид и названий жанров
+
+    def index(request):
+    tmdb.API_KEY = secret.API_KEY
+    genres_api = tmdb.Genres().movie_list()
+
+    for gen in genres_api['genres']:
+        genre = models.GenreModel(id=gen['id'], title=gen['name'])
+        genre.save()
+
+    genres = models.GenreModel.objects.all()
+
+    return render(request, 'movienews_app/index.html', {'genres': genres})
+
+
+# Получение актеров и директоров по записанным в БД фильмам
+
+    def index(request):
+    tmdb.API_KEY = secret.API_KEY
+
+    movies = models.MovieModel.objects.all()
+
+    for movie in movies:
+        credit = tmdb.Movies(movie.id).credits()
+
+        for people in credit['cast'][:5]:
+            actor = models.ActorModel(id=people['id'],
+                                      name=people['name'])
+            if people['profile_path']:
+                actor.image = 'http://image.tmdb.org/t/p/w185' + people['profile_path']
+
+            actor.save()
+
+            movie.actors.add(actor)
+
+        for people in credit['crew']:
+            if people['job'] == 'Director':
+                director = models.DirectorModel(id=people['id'],
+                                                name=people['name'])
+
+                if people['profile_path']:
+                    director.image = 'http://image.tmdb.org/t/p/w185' + people['profile_path']
+
+                director.save()
+
+                movie.directors.add(director)
+
+    return render(request, 'movienews_app/index.html', {'movies': movies})

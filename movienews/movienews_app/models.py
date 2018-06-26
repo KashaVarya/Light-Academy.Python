@@ -4,44 +4,54 @@ from django.db import models
 
 
 class MovieModel(models.Model):
-    id = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=64)
-    image = models.ImageField()
+    id = models.IntegerField(primary_key=True)
+    title = models.CharField(max_length=64, null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
     genres = models.ManyToManyField('GenreModel')
     directors = models.ManyToManyField('DirectorModel')
     actors = models.ManyToManyField('ActorModel')
-    date = models.DateField()
-    country = models.CharField(max_length=32)
-    duration = models.TimeField()
-    rating = models.FloatField()
-    summary = models.TextField()
+    date = models.DateField(null=True, blank=True)
+    country = models.CharField(max_length=32, null=True, blank=True)
+    duration = models.IntegerField(null=True, blank=True)
+    rating = models.FloatField(default=0.0)
+    summary = models.TextField(null=True, blank=True)
 
 
 class GenreModel(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=64)
-    summary = models.TextField()
-    users = models.ManyToManyField('UserModel')
 
 
 class DirectorModel(models.Model):
+    GENDER_CHOICES = (
+                         (0, 'not set'),
+                         (1, 'Female'),
+                         (2, 'Male')
+    )
+
     id = models.AutoField(primary_key=True)
-    last_name = models.CharField(max_length=32)
-    first_name = models.CharField(max_length=32)
-    middle_name = models.CharField(max_length=32, null=True, blank=True)
-    image = models.ImageField()
-    bio = models.TextField()
-    movies = models.ManyToManyField(MovieModel)
+    name = models.CharField(max_length=64, default="No data.")
+    image = models.CharField(max_length=256, default="No data.")
+    bio = models.TextField(default="No data.")
+    gender = models.IntegerField(choices=GENDER_CHOICES, default=0)
+    birthday = models.CharField(max_length=32, default="No data.")
+    deathday = models.CharField(max_length=32, default="No data.")
 
 
 class ActorModel(models.Model):
+    GENDER_CHOICES = (
+                         (0, 'not set'),
+                         (1, 'Female'),
+                         (2, 'Male')
+    )
+
     id = models.AutoField(primary_key=True)
-    last_name = models.CharField(max_length=32)
-    first_name = models.CharField(max_length=32)
-    middle_name = models.CharField(max_length=32, null=True, blank=True)
-    image = models.ImageField()
-    bio = models.TextField()
-    movies = models.ManyToManyField(MovieModel)
+    name = models.CharField(max_length=64, default="No data.")
+    image = models.CharField(max_length=256, default="No data.")
+    bio = models.TextField(default="No data.")
+    gender = models.IntegerField(choices=GENDER_CHOICES, default=0)
+    birthday = models.CharField(max_length=32, default="No data.")
+    deathday = models.CharField(max_length=32, default="No data.")
 
 
 class ReviewModel(models.Model):
