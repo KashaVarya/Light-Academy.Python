@@ -8,13 +8,17 @@
     <form action="login" method="post">
         {% csrf_token %}
         {{ form.as_p }}
+        <button type="submit">LogIn</button>
+
+        {% for task in tasks %}
+            {{ task }}
+        {% endfor %}
         <!--<p>Username:-->
             <!--<input type="text" name="username">-->
         <!--</p>-->
         <!--<p>Password:-->
             <!--<input type="text" name="password">-->
         <!--</p>-->
-        <button type="submit">LogIn</button>
     </form>
 </body>
 </html>

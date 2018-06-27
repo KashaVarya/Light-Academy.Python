@@ -21,6 +21,7 @@ from session_app import views
 urlpatterns = [
     # url(r'^admin/', include(admin.site.urls)),
     url(r'^django-admin/', admin.site.urls),
-    url(r'^$', views.main_login),
     url(r'^login$', views.check),
+    url(r'^tasks/$', views.get_tasks),
+    url(r'^$', views.main_login),
 ]
