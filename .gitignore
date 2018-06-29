@@ -5,3 +5,4 @@ venv
 chat-task/README.md
 chat-task/article.md
 env
+secret.py

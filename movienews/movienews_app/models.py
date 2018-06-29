@@ -29,7 +29,7 @@ class DirectorModel(models.Model):
                          (2, 'Male')
     )
 
-    id = models.AutoField(primary_key=True)
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=64, default="No data.")
     image = models.CharField(max_length=256, default="No data.")
     bio = models.TextField(default="No data.")
@@ -45,7 +45,7 @@ class ActorModel(models.Model):
                          (2, 'Male')
     )
 
-    id = models.AutoField(primary_key=True)
+    id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=64, default="No data.")
     image = models.CharField(max_length=256, default="No data.")
     bio = models.TextField(default="No data.")
@@ -54,17 +54,9 @@ class ActorModel(models.Model):
     deathday = models.CharField(max_length=32, default="No data.")
 
 
-class ReviewModel(models.Model):
-    id = models.AutoField(primary_key=True)
-    text = models.TextField()
-    user = models.ForeignKey('UserModel', on_delete=models.SET_NULL, null=True, blank=True)
-    movie = models.ForeignKey(MovieModel, on_delete=models.SET_NULL, null=True, blank=True)
-
-
 class UserModel(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.IntegerField(primary_key=True)
     login = models.CharField(max_length=32)
     password = models.CharField(max_length=32)
-    image = models.ImageField()
-    bio = models.TextField()
+    bio = models.CharField(max_length=128)
     genres = models.ManyToManyField(GenreModel)

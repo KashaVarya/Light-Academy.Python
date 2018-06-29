@@ -79,3 +79,70 @@ def index(request):
                 movie.directors.add(director)
 
     return render(request, 'movienews_app/index.html', {'movies': movies})
+
+
+# Получение остальных сведений об актерах (для директоров аналогично сделать)
+
+def index(request):
+    tmdb.API_KEY = secret.API_KEY
+
+    actors = models.ActorModel.objects.all()
+
+    for actor in actors:
+        act = tmdb.People(actor.id)
+        respond = act.info()
+
+        actor.bio = act.biography
+        actor.gender = act.gender
+        if act.birthday:
+            actor.birthday = act.birthday
+        if act.deathday:
+            actor.deathday = act.deathday
+
+        actor.save()
+
+    return render(request, 'movienews_app/index.html', {'movies': actors})
+
+
+# Получение жанров каждого фильма
+
+    def index(request):
+    tmdb.API_KEY = secret.API_KEY
+
+    movies = models.MovieModel.objects.all()
+
+    for movie in movies:
+        m = tmdb.Movies(movie.id)
+        m.info()
+        genres_m = m.genres
+
+        for genre in genres_m:
+            g = models.GenreModel(id=genre['id'])
+            movie.save()
+            g.save()
+            movie.genres.add(g)
+
+    return render(request, 'movienews_app/index.html', {'movies': movies})
+
+
+# Добавление пользователя вручную с любимыми жанрами
+
+    def index(request):
+    tmdb.API_KEY = secret.API_KEY
+
+    u1 = models.UserModel(id=5,
+                          login='stanislav',
+                          password='password',
+                          bio='My fifth  account.')
+    u1.save()
+    g1 = models.GenreModel(id=16)
+    g2 = models.GenreModel(id=18)
+    g3 = models.GenreModel(id=878)
+    g1.save()
+    g2.save()
+    g3.save()
+    u1.genres.add(g1, g2, g3)
+
+    u1.save()
+
+    return render(request, 'movienews_app/index.html', {'movies': u1})

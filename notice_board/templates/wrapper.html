@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} | Notice Board</title>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+</head>
+<body>
+    <div class="box">
+        <h1><a href="/">Notice Board</a></h1>
+        <p class="tagline">Notice Board is a service for your adverts online
+                           written with Werkzeug by Varya</p>
+        {% block body %}{% endblock %}
+    </div>
+</body>
+</html>

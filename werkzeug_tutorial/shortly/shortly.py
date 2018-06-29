@@ -10,6 +10,7 @@ from jinja2 import Environment, FileSystemLoader
 
 
 class Shortly(object):
+
     def __init__(self, config):
         self.redis = redis.Redis(config['redis_host'], config['redis_port'])
         template_path = os.path.join(os.path.dirname(__file__), 'templates')
