@@ -26,16 +26,50 @@ notices = [
         'id': 1,
         'title': 'Prodam garazh',
         'author': 'varya',
-        'likes': 41,
+        'likes': [
+            {
+                'author': 'varya',
+                'time': 1530321686
+            },
+            {
+                'author': 'varya',
+                'time': 1530321694
+            },
+            {
+                'author': 'varya',
+                'time': 1530321613
+            },
+            {
+                'author': 'varya',
+                'time': 1530321655
+            },
+        ],
         'date': 'Sat Jun 30 01:21:26 2018',
         'comments': [
             {
                 'author': 'admin',
-                'comment': 'how much?'
+                'comment': 'how much?',
+                'time': 1530321686
             },
             {
                 'author': 'aleksey',
-                'comment': 'ya pokupayu'
+                'comment': 'ya pokupayu',
+                'time': 1530322346
+            },
+            {
+                'author': 'varya',
+                'comment': 'privet vsem',
+                'time': 1530322350
+            },
+            {
+                'author': 'varya',
+                'comment': 'xochy morozhenko',
+                'time': 1530322360
+            },
+            {
+                'author': 'varya',
+                'comment': 'kto pokupaet?',
+                'time': 1530322370
             }
         ]
     },
@@ -43,7 +77,7 @@ notices = [
         'id': 2,
         'title': 'Xorowii mobilnii Motorola, 200grn',
         'author': 'admin',
-        'likes': 14,
+        'likes': [],
         'date': 'Sun Jun 24 11:51:11 2018',
         'comments': []
     }
@@ -122,6 +156,7 @@ def not_found():
 
 @app.route('/notice_board/api/v1.0/add_notice',
            methods=['POST'])
+@auth.login_required
 def add_notice():
     if 'title' not in request.json \
             or len(request.json['title']) > 50:
@@ -138,7 +173,7 @@ def add_notice():
         'id': notices[-1]['id'] + 1,
         'title': request.json['title'],
         'author': request.json['author'],
-        'likes': 0,
+        'likes': [],
         'comments': [],
         'date': date_time
     }
@@ -149,81 +184,57 @@ def add_notice():
 
 @app.route('/notice_board/api/v1.0/notices/<int:notice_id>/add_comment',
            methods=['POST'])
+@auth.login_required
 def add_coment(notice_id):
     if 'comment' not in request.json \
             or len(request.json['comment']) > 255:
         abort(422, 'Invalid comment')
 
-    if 'author' not in request.json \
-            or len(request.json['author']) > 30:
-        abort(422, 'Invalid author')
+    times = []
+    author = auth.username()
+    for notice in notices:
+        for comment in notice['comments']:
+            if comment['author'] == author:
+                times.append(comment['time'])
+    times.sort()
+
+    if len(times) > 4 and (int(datetime.datetime.now().timestamp()) - times[-5] < 3600):
+        abort(422, 'Too hot')
 
     for notice in notices:
         if notice['id'] == notice_id:
             notice['comments'].append({
-                'author': request.json['author'],
+                'author': author,
                 'comment': request.json['comment'],
+                'time': int(datetime.datetime.now().timestamp())
             })
             return jsonify({'notice': [make_public_notice(notice)]}, 201)
-
     return abort(404)
 
 
 @app.route('/notice_board/api/v1.0/notices/<int:notice_id>/like',
            methods=['POST'])
+@auth.login_required
 def like(notice_id):
+    times = []
+    author = auth.username()
+    for notice in notices:
+        for comment in notice['likes']:
+            if comment['author'] == author:
+                times.append(comment['time'])
+    times.sort()
+
+    if len(times) > 4 and (int(datetime.datetime.now().timestamp()) - times[-5] < 3600):
+        abort(422, 'Too hot')
+
     for notice in notices:
         if notice['id'] == notice_id:
-            notice['likes'] = notice['likes'] + 1
+            notice['likes'].append({
+                'author': author,
+                'time': int(datetime.datetime.now().timestamp())
+            })
             return jsonify({'notice': [make_public_notice(notice)]}, 201)
-
     return abort(404)
-
-#
-#
-#
-#
-#
-
-# @app.errorhandler(400)
-# def not_found(error):
-#     return make_response(jsonify({'error': 'Bad request'}), 400)
-#
-#
-
-#
-#
-# @app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['PUT'])
-# @auth.login_required
-# def update_task(task_id):
-#     task = [task
-#             for task in tasks
-#             if task['id'] == task_id]
-#     if len(task) == 0:
-#         abort(404)
-#     if not request.json:
-#         abort(400)
-#     if 'done' in request.json and type(request.json['done']) is not bool:
-#         abort(400)
-#     task[0]['title'] = request.json.get('title', task[0]['title'])
-#     task[0]['description'] = request.json.get('description', task[0]['description'])
-#     task[0]['done'] = request.json.get('done', task[0]['done'])
-#     return jsonify({'task': [make_public_task(task[0])]})
-#
-#
-# @app.route('/todo/api/v1.0/tasks/<int:task_id>', methods=['DELETE'])
-# @auth.login_required
-# def delete_task(task_id):
-#     task = [task
-#             for task in tasks
-#             if task['id'] == task_id]
-#     if len(task) == 0:
-#         abort(404)
-#     tasks.remove(task[0])
-#     return jsonify({'result': True})
-#
-#
-#
 
 
 if __name__ == '__main__':
