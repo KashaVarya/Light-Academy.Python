@@ -20,5 +20,5 @@ from movienews_app import views
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
-    url(r'^$', views.index),
+    url(r'^/$', views.MovieView.as_view()),
 ]
