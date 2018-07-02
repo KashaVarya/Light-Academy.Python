@@ -1,0 +1,9 @@
+{% extends "movienews_app/wrapper.html" %}
+
+{% block title %}Movies{% endblock %}
+
+{% block body %}
+    {% for movie in movies_list %}
+        <p>{{ movie.title }}</p>
+    {% endfor %}
+{% endblock %}

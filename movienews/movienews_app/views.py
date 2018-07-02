@@ -2,7 +2,7 @@ from django.shortcuts import render
 import tmdbsimple as tmdb
 from .models import MovieModel
 from movienews import secret
-from django.views.generic import TemplateView
+from django.views.generic import ListView
 
 
 # Create your views here.
@@ -14,10 +14,8 @@ def index(request):
     return render(request, 'movienews_app/index.html')
 
 
-class MovieView(TemplateView):
-    template_name = 'movienews_app/movies.html'
+class MovieView(ListView):
+    model = MovieModel
+    template_name = 'movienews_app/movies_list.html'
+    context_object_name = 'movies_list'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['movies'] = MovieModel.objects.all()
-        return context
