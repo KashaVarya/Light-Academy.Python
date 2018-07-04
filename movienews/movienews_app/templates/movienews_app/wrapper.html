@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} | MovieNews</title>
+    <link rel="stylesheet" href="{% static 'movienews_app/style.css' %}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">MovieNews</div>
+        <div class="header-buttons">
+            <a href="/" class="header-button">SignIn</a>
+            <a href="/" class="header-button">SignUp</a>
+        </div>
+    </div>
+
+    {% block body %}{% endblock %}
+</body>
+</html>

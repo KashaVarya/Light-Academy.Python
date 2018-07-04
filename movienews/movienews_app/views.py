@@ -1,7 +1,8 @@
 from django.shortcuts import render
 import tmdbsimple as tmdb
-from . import models
+from .models import MovieModel
 from movienews import secret
+from django.views.generic import ListView
 
 
 # Create your views here.
@@ -10,4 +11,11 @@ from movienews import secret
 def index(request):
     tmdb.API_KEY = secret.API_KEY
 
-    return render(request, 'movienews_app/index.html', {'movies': u1})
+    return render(request, 'movienews_app/index.html')
+
+
+class MovieView(ListView):
+    model = MovieModel
+    template_name = 'movienews_app/movies_list.html'
+    context_object_name = 'movies_list'
+
