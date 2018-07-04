@@ -22,23 +22,23 @@ msgstr ""
 
 #: app_posts/templates/app_posts/base.html:216
 msgid "Home"
-msgstr ""
+msgstr "Главная"
 
 #: app_posts/templates/app_posts/base.html:217
 msgid "New features"
-msgstr ""
+msgstr "Новые функции"
 
 #: app_posts/templates/app_posts/base.html:218
 msgid "Press"
-msgstr ""
+msgstr "Нажать"
 
 #: app_posts/templates/app_posts/base.html:219
 msgid "New hires"
-msgstr ""
+msgstr "Нью хаерс"
 
 #: app_posts/templates/app_posts/base.html:220
 msgid "About"
-msgstr ""
+msgstr "О нас"
 
 #: env/lib/python3.5/site-packages/django/contrib/messages/apps.py:7
 msgid "Messages"

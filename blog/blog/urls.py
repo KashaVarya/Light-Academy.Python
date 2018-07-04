@@ -13,11 +13,27 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
+from django.conf.urls.i18n import i18n_patterns
 from app_posts import views
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.main),
+    url(r'^i18n/', include('django.conf.urls.i18n'))
 ]
+
+
+# urlpatterns += i18n_patterns(
+#     url('posts/', include('posts.urls')),
+# )
+
+
+from django.conf import settings
+
+if 'rosetta' in settings.INSTALLED_APPS:
+    urlpatterns += [
+        url(r'^rosetta/', include('rosetta.urls'))
+    ]
