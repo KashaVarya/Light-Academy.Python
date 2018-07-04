@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -7,7 +8,7 @@ class Category(models.Model):
     name = models.CharField(max_length=20, unique=True)
     description = models.CharField(max_length=64)
     is_active = models.BooleanField()
-    user = models.ForeignKey('User', null=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
 
 class Post(models.Model):
@@ -26,9 +27,9 @@ class Post(models.Model):
         (STATUS_AUTHORIZED, 'Authorized'),
     )
 
-    status = models.SmallIntegerField()
+    status = models.SmallIntegerField(choices=STATUSES, default=STATUS_DRAFT)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    user = models.ForeignKey('User', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255, unique=True)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
