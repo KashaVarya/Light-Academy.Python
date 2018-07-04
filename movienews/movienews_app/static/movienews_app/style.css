@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    flex-flow: row nowrap;
+    background: url("logo-background.png");
+    background-size: 100% 100%;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 84px;
+    color: #f93b81;
+}
+
+
+
+
+

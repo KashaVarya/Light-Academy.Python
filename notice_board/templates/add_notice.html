@@ -1,0 +1,23 @@
+{% extends "wrapper.html" %}
+
+{% block title %}Add new notice{% endblock %}
+
+{% block body %}
+    <p><a href="/" class="button">Main page</a></p>
+    <form method="post">
+            <p>
+        Your name:
+        <input type="text" maxlength="30" name="author">
+    </p>
+    <p>
+        Your notice:
+        <input type="text" maxlength="50" name="notice">
+    </p>
+    <input class="button" type="submit" value="Add notice">
+    </form>
+
+    {% if mes %}
+        <p class="mes">{{ mes }}</p>
+    {% endif %}
+
+{% endblock %}

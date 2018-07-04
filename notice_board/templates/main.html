@@ -1,0 +1,12 @@
+{% extends "wrapper.html" %}
+
+{% block title %}Main Page{% endblock %}
+
+{% block body %}
+    <p><a href="/add_notice" class="button">Add new notice</a></p>
+
+    {% for notice in notices %}
+        <p><a href="notice_{{ notice[0] }}">{{ notice[1] }}</a></p>
+    {% endfor %}
+
+{% endblock %}

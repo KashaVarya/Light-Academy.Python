@@ -1,0 +1,23 @@
+{% extends "wrapper.html" %}
+
+{% block title %}Add new comment{% endblock %}
+
+{% block body %}
+    <p><a href="/" class="button">Main page</a></p>
+    <form method="post">
+            <p>
+        Your name:
+        <input type="text" maxlength="30" name="author">
+    </p>
+    <p>
+        Your comment:
+        <input type="text" maxlength="255" name="comment">
+    </p>
+    <input class="button" type="submit" value="Add comment">
+    </form>
+
+    {% if mes %}
+        <p class="mes">{{ mes }}</p>
+    {% endif %}
+
+{% endblock %}
