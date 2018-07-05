@@ -1,0 +1,15 @@
+{% extends "article_app/wrapper.html" %}
+
+{% block main %}
+<form method="POST" class="form-login">
+  {%  csrf_token %}
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+  <input type="text" name="inputNickname" class="form-control" placeholder="Nickname" required autofocus>
+  <br>
+  <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
+  <br>
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>
+{% endblock %}
