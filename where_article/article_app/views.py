@@ -4,23 +4,21 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 from .models import UserModel, Article
-
-
-# Create your views here.
 
 
 class MainView(ListView):
     model = Article
 
-    def get(self, request, *args, **kwargs):
-        if not request.user.is_authenticated:
-            self.template_name = 'article_app/main.html'
-        elif request.user.is_staff:
-            self.template_name = 'article_app/main_staff.html'
+    def get_template_names(self):
+        print('user auth: {}'.format(self.request.user.is_authenticated))
+        if not self.request.user.is_authenticated:
+            return 'article_app/main.html'
+        elif self.request.user.is_staff:
+            return 'article_app/main_staff.html'
         else:
-            self.template_name = 'article_app/main_logged.html'
+            return 'article_app/main_logged.html'
 
 
 def index(request):
@@ -36,12 +34,14 @@ class LogInView(TemplateView):
         password = request.POST.get('inputPassword')
 
         user = authenticate(username=name, password=password)
-
         if user is not None:
-            if user.is_staff:
-                return render(request, 'article_app/main_staff.html')
-            else:
-                return render(request, 'article_app/main_logged.html')
+            login(request, user)
+
+        # if user is not None:
+        #     if user.is_staff:
+        #         return render(request, 'article_app/main_staff.html')
+        #     else:
+        #         return render(request, 'article_app/main_logged.html')
         return redirect('/')
 
 
