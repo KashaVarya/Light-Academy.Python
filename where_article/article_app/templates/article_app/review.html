@@ -12,14 +12,22 @@
   {%  csrf_token %}
   <h1 class="h3 mb-3 font-weight-normal">Please review the article</h1>
 
-  <div class="blog-post">
-    <h2 class="blog-post-title">{{ article.title }}</h2>
-    <p class="blog-post-meta">by {{ article.user.username }}</p>
-    <p>{{ article.content }}</p>
-    <hr>
-  </div><!-- /.blog-post -->
+  {% if empty %}
+    <p>
+      There are no articles on review. Try later.
+    </p>
+  {% endif %}
+  {% if not empty %}
 
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Accept</button>
-  <a href="/decline" class="btn btn-lg btn-primary btn-block">Decline</a>
+    <div class="blog-post">
+      <h2 class="blog-post-title">{{ article.title }}</h2>
+      <p class="blog-post-meta">by {{ article.user.username }}</p>
+      <p>{{ article.content }}</p>
+    </div><!-- /.blog-post -->
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Accept</button>
+    <a href="/decline/{{ article.id }}" class="btn btn-lg btn-primary btn-block">Decline</a>
+    <input type="hidden" name="title" value="{{ article.title }}">
+  {% endif %}
 </form>
 {% endblock %}

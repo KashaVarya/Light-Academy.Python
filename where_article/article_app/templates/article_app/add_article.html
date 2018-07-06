@@ -11,7 +11,8 @@
   {%  csrf_token %}
   <h1 class="h3 mb-3 font-weight-normal">Please add your article</h1>
 
-  <select name="category" autofocus required>
+  <select name="category" autofocus required
+          class="btn btn-primary dropdown-toggle">
     {% for category in categories %}
         <option value={{category.name}}>{{category.name}}</option>
     {% endfor %}

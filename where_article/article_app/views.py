@@ -42,6 +42,7 @@ class LogInView(TemplateView):
         password = request.POST.get('inputPassword')
 
         user = authenticate(username=name, password=password)
+        print(user)
         if user is not None:
             login(request, user)
 
@@ -116,23 +117,46 @@ class AddCategoryView(TemplateView):
         category.save()
         return redirect('/')
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        categories = Category.objects.all()
+        context['categories'] = categories
+        return context
+
 
 class ReviewView(TemplateView):
 
     template_name = 'article_app/review.html'
 
+    def post(self, request, *args, **kwargs):
+        article = Article.objects.get(title=request.POST.get('title'))
+        article.status = True
+        article.save()
+        return redirect('/review')
+
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        article = Article.objects.all().filter(status=False)[1]
-        context['article'] = article
+        categories = Category.objects.all()
+        context['categories'] = categories
+        article = Article.objects.all().filter(status=False)
+        if article:
+            article = article[0]
+            context['article'] = article
+            context['empty'] = False
+        else:
+            context['empty'] = True
         return context
 
 
 class DeclineView(RedirectView):
 
-    url = '/add_category'
+    url = '/review'
 
-
+    def get_redirect_url(self, *args, **kwargs):
+        id = kwargs.get('id')
+        article = Article.objects.get(id=id)
+        article.delete()
+        return super().get_redirect_url(*args, **kwargs)
 
 
 def on_main_page(request):
