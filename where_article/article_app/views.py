@@ -117,6 +117,24 @@ class AddCategoryView(TemplateView):
         return redirect('/')
 
 
+class ReviewView(TemplateView):
+
+    template_name = 'article_app/review.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        article = Article.objects.all().filter(status=False)[1]
+        context['article'] = article
+        return context
+
+
+class DeclineView(RedirectView):
+
+    url = '/add_category'
+
+
+
+
 def on_main_page(request):
     return redirect('/World')
 

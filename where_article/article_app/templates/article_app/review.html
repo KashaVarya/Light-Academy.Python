@@ -1,0 +1,25 @@
+{% extends "article_app/wrapper.html" %}
+
+{% block header-buttons %}
+<div class="col-4 d-flex justify-content-end align-items-center">
+    <a class="btn btn-sm btn-primary mr-2" href="/add_category">Add category</a>
+    <a class="btn btn-sm btn-primary mr-2" href="/logout">Log out</a>
+</div>
+{% endblock %}
+
+{% block main %}
+<form method="POST" class="form-login">
+  {%  csrf_token %}
+  <h1 class="h3 mb-3 font-weight-normal">Please review the article</h1>
+
+  <div class="blog-post">
+    <h2 class="blog-post-title">{{ article.title }}</h2>
+    <p class="blog-post-meta">by {{ article.user.username }}</p>
+    <p>{{ article.content }}</p>
+    <hr>
+  </div><!-- /.blog-post -->
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Accept</button>
+  <a href="/decline" class="btn btn-lg btn-primary btn-block">Decline</a>
+</form>
+{% endblock %}
