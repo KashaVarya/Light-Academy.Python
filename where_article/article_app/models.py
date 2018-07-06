@@ -22,4 +22,5 @@ class Article(models.Model):
     title = models.CharField(max_length=64)
     content = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     status = models.BooleanField(default=False)

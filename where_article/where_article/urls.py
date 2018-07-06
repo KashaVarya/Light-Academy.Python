@@ -19,7 +19,11 @@ from article_app import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.MainView.as_view()),
+    url(r'^$', views.on_main_page),
     url(r'^login$', views.LogInView.as_view()),
     url(r'^signup$', views.SignUpView.as_view()),
+    url(r'^logout$', views.LogOutView.as_view()),
+    url(r'^add_article$', views.AddArticleView.as_view()),
+    url(r'^add_category$', views.AddCategoryView.as_view()),
+    url(r'^(?P<category>\w+)$', views.MainView.as_view()),
 ]

@@ -1,0 +1,15 @@
+{% extends "article_app/wrapper.html" %}
+
+{% block main %}
+    <p>{{ category_selected.description }}</p>
+    {% for article in object_list %}
+        {% if article.category.name == category_selected.name %}
+            <div class="blog-post">
+                <h2 class="blog-post-title">{{ article.title }}</h2>
+                <p class="blog-post-meta">by {{ article.user.username }}</p>
+                <p>{{ article.content }}</p>
+                <hr>
+            </div><!-- /.blog-post -->
+        {% endif %}
+    {% endfor %}
+{% endblock %}
