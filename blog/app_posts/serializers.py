@@ -7,7 +7,7 @@ class CategorySerializer(serializers.Serializer):
     name = serializers.CharField(max_length=20)
     description = serializers.CharField(max_length=64, required=False)
     is_active = serializers.BooleanField(required=False)
-    user = serializers.IntegerField(source='user_id', required=False)
+    user = serializers.IntegerField(source='user_id', required=False, allow_null=True)
 
 
 class PostSerializer(serializers.Serializer):
