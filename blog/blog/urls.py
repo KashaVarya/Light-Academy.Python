@@ -31,9 +31,9 @@ urlpatterns = [
 # )
 
 
-from django.conf import settings
-
-if 'rosetta' in settings.INSTALLED_APPS:
-    urlpatterns += [
-        url(r'^rosetta/', include('rosetta.urls'))
-    ]
+# from django.conf import settings
+#
+# if 'rosetta' in settings.INSTALLED_APPS:
+#     urlpatterns += [
+#         url(r'^rosetta/', include('rosetta.urls'))
+#     ]
