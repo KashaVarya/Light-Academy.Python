@@ -122,3 +122,6 @@ LANGUAGES = (
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# можем передать дефолтные паигнйшин, пермишин и аутентификашин классы
+# REST_FRAMEWORK = {}

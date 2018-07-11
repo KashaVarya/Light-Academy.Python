@@ -4,6 +4,7 @@ from rest_framework import mixins
 from .models import Post, Category
 from .serializers import PostSer, CatSer
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 
 def main(request):
@@ -15,6 +16,7 @@ class PostList(mixins.ListModelMixin,
                generics.GenericAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
@@ -29,6 +31,7 @@ class PostDetail(mixins.RetrieveModelMixin,
                  generics.GenericAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
 
     def get(self, request, *args, **kwargs):
         return self.retrieve(request, *args, **kwargs)
@@ -43,3 +46,5 @@ class PostDetail(mixins.RetrieveModelMixin,
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CatSer
+    permission_classes = (IsAuthenticatedOrReadOnly,)
+    # pagination_class =

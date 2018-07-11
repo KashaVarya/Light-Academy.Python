@@ -3,23 +3,37 @@ from .models import Post, Category
 from django.contrib.auth.models import User
 
 
-class PostSer(serializers.ModelSerializer):
-
-    user = serializers.SlugRelatedField(queryset=User.objects.all(),
-                                        slug_field='username')
-
-    class Meta:
-        fields = ('id', 'status', 'category', 'user', 'title', 'content', 'created_on', 'updated_on')
-        model = Post
-        read_only_fields = ('id', 'created_on', 'updated_on')
-        extra_kwargs = {'title': {'required': True}}  # словарь
-
-
 class CatSer(serializers.ModelSerializer):
 
     class Meta:
         fields = ('id', 'name', 'description', 'is_active', 'user')
         model = Category
+
+
+class PostSer(serializers.ModelSerializer):
+
+    user = serializers.SlugRelatedField(queryset=User.objects.all(),
+                                        slug_field='username')
+    # category_id = serializers.RelatedField(queryset=Category.objects.all(),
+    #                                        write_only=True)
+    # category_repr = CatSer(source='category_id',
+    #                        read_only=True)
+
+    class Meta:
+        fields = ('id',
+                  'status',
+                  'category',
+                  'user',
+                  'title',
+                  'content',
+                  'created_on',
+                  'updated_on',
+                  # 'category_id',
+                  # 'category_repr'
+                  )
+        model = Post
+        read_only_fields = ('id', 'created_on', 'updated_on')
+        extra_kwargs = {'title': {'required': True}}  # словарь
 
 
 # class CategorySerializer(serializers.Serializer):

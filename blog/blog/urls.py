@@ -30,7 +30,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.main),
     url(r'^posts$', views.PostList.as_view()),
-    url(r'^post/?P<pk>$', views.PostDetail.as_view()),
+    url(r'^post/(?P<pk>\w+)$', views.PostDetail.as_view()),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 ]
 
