@@ -17,21 +17,16 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
 from app_posts import views
-from rest_framework.routers import DefaultRouter
-
-
-# Create a router and register our viewsets with it.
-router = DefaultRouter()
-router.register(r'categories', views.CategoryViewSet)
 
 
 urlpatterns = [
-    url(r'^categories/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.main),
+    url(r'^categories$', views.CategoryList.as_view()),
+    url(r'^categories/(?P<pk>[0-9]+)$', views.CategoryDetail.as_view()),
     url(r'^posts$', views.PostList.as_view()),
-    url(r'^post/(?P<pk>\w+)$', views.PostDetail.as_view()),
+    url(r'^posts/(?P<pk>[0-9]+)$', views.PostDetail.as_view()),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^$', views.main),
 ]
 
 
