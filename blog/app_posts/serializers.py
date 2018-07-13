@@ -3,23 +3,30 @@ from .models import Post, Category
 from django.contrib.auth.models import User
 
 
-class CatSer(serializers.ModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
 
     class Meta:
-        fields = ('id', 'name', 'description', 'is_active', 'user')
         model = Category
+        fields = ('id',
+                  'name',
+                  'description',
+                  'is_active',
+                  'user'
+                  )
+        read_only_fields = ('id',)
 
 
-class PostSer(serializers.ModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
 
-    user = serializers.SlugRelatedField(queryset=User.objects.all(),
-                                        slug_field='username')
+    # user = serializers.SlugRelatedField(queryset=User.objects.all(),
+    #                                     slug_field='username')
     # category_id = serializers.RelatedField(queryset=Category.objects.all(),
     #                                        write_only=True)
     # category_repr = CatSer(source='category_id',
     #                        read_only=True)
 
     class Meta:
+        model = Post
         fields = ('id',
                   'status',
                   'category',
@@ -31,42 +38,20 @@ class PostSer(serializers.ModelSerializer):
                   # 'category_id',
                   # 'category_repr'
                   )
-        model = Post
-        read_only_fields = ('id', 'created_on', 'updated_on')
+        read_only_fields = ('id',
+                            'created_on',
+                            'updated_on')
         extra_kwargs = {'title': {'required': True}}  # словарь
 
 
-# class CategorySerializer(serializers.Serializer):
-#     id = serializers.IntegerField(read_only=True)
-#     name = serializers.CharField(max_length=20)
-#     description = serializers.CharField(max_length=64, required=False)
-#     is_active = serializers.BooleanField(required=False)
-#     user = serializers.IntegerField(source='user_id', required=False, allow_null=True)
-#
-#
-# class PostSerializer(serializers.Serializer):
-#     id = serializers.IntegerField(read_only=True)
-#     status = serializers.ChoiceField(choices=Post.STATUSES, required=False)
-#     category = CategorySerializer(required=True)
-#     user = serializers.IntegerField(source='user_id', required=False)
-#     title = serializers.CharField(max_length=255, required=True)
-#     content = serializers.CharField(max_length=1024, required=True)
-#     created_on = serializers.DateTimeField(read_only=True)
-#     updated_on = serializers.DateTimeField(read_only=True)
-#
-#     def create(self, validated_data):
-#         return Post.objects.create(**validated_data)
-#
-#     def update(self, instance, validated_data):
-#         instance.status = validated_data.get('status', instance.status)
-#         instance.title = validated_data.get('title', instance.title)
-#         instance.content = validated_data.get('content', instance.content)
-#         instance.category = validated_data.get('category', instance.category)
-#         instance.category_id = validated_data['category']['id']
-#         instance.user = validated_data.get('user', instance.user)
-#         instance.save()
-#         return instance
+class UserSerializer(serializers.ModelSerializer):
 
-
-# from app_posts.serializers import CategorySerializer, PostSerializer
-# from app_posts.models import Post, Category
+    class Meta:
+        model = User
+        fields = ('id',
+                  'username',
+                  'first_name',
+                  'last_name',
+                  'email',
+                  'is_staff',
+                  'is_active')
