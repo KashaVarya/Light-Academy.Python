@@ -26,11 +26,19 @@ router.register(r'categories', views.CategoryViewSet)
 
 
 urlpatterns = [
-    url(r'^categories/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
+    url(r'^posts$', views.PostList.as_view(), name='post-list'),
+    url(r'^posts/(?P<pk>[0-9]+)$',
+        views.PostDetail.as_view(),
+        name='post-detail'),
+    url(r'^users$', views.UserList.as_view(), name='user-list'),
+    url(r'^users/(?P<pk>[0-9]+)$',
+        views.UserDetail.as_view(),
+        name='user-detail'),
+    url(r'^api-auth/', include('rest_framework.urls')),
+
+    url(r'^categories/', include(router.urls)),
     url(r'^$', views.main),
-    url(r'^posts$', views.PostList.as_view()),
-    url(r'^post/(?P<pk>\w+)$', views.PostDetail.as_view()),
     url(r'^i18n/', include('django.conf.urls.i18n')),
 ]
 

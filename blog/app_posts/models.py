@@ -29,7 +29,7 @@ class Post(models.Model):
 
     status = models.SmallIntegerField(choices=STATUSES, default=STATUS_DRAFT)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name='posts', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, unique=True)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)

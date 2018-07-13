@@ -11,7 +11,7 @@ class CategorySerializer(serializers.ModelSerializer):
                   'name',
                   'description',
                   'is_active',
-                  'user'
+                  'user',
                   )
         read_only_fields = ('id',)
 
@@ -24,6 +24,8 @@ class PostSerializer(serializers.ModelSerializer):
     #                                        write_only=True)
     # category_repr = CatSer(source='category_id',
     #                        read_only=True)
+
+    user = serializers.ReadOnlyField(source='user.username')
 
     class Meta:
         model = Post
@@ -40,18 +42,21 @@ class PostSerializer(serializers.ModelSerializer):
                   )
         read_only_fields = ('id',
                             'created_on',
-                            'updated_on')
+                            'updated_on',
+                            )
         extra_kwargs = {'title': {'required': True}}  # словарь
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    posts = serializers.HyperlinkedRelatedField(many=True,
+                                                view_name='post-detail',
+                                                read_only=True,
+                                                )
 
     class Meta:
         model = User
-        fields = ('id',
+        fields = ('url',
+                  'id',
                   'username',
-                  'first_name',
-                  'last_name',
-                  'email',
-                  'is_staff',
-                  'is_active')
+                  'posts',
+                  )
