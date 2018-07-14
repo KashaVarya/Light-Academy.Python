@@ -16,20 +16,21 @@ class CategorySerializer(serializers.ModelSerializer):
         read_only_fields = ('id',)
 
 
-class PostSerializer(serializers.ModelSerializer):
+class PostSerializer(serializers.HyperlinkedModelSerializer):
 
     # user = serializers.SlugRelatedField(queryset=User.objects.all(),
     #                                     slug_field='username')
     # category_id = serializers.RelatedField(queryset=Category.objects.all(),
     #                                        write_only=True)
-    # category_repr = CatSer(source='category_id',
+    # category_repr = CategorySerializer(source='category_name',
     #                        read_only=True)
 
     user = serializers.ReadOnlyField(source='user.username')
 
     class Meta:
         model = Post
-        fields = ('id',
+        fields = ('url',
+                  'id',
                   'status',
                   'category',
                   'user',
@@ -55,8 +56,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = User
-        fields = ('url',
-                  'id',
+        fields = ('id',
                   'username',
+                  'url',
                   'posts',
                   )

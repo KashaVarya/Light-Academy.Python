@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'app_posts',
     'rest_framework',
+    'rest_framework_swagger',
 )
 
 MIDDLEWARE = (
@@ -124,4 +125,8 @@ LANGUAGES = (
 STATIC_URL = '/static/'
 
 # можем передать дефолтные паигнйшин, пермишин и аутентификашин классы
-# REST_FRAMEWORK = {}
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 3,
+    # 'DEFAULT_PERMISSION_CLASS': 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+}
