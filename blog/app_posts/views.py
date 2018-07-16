@@ -36,6 +36,10 @@ class PostViewSet(viewsets.ModelViewSet):
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list`, `create`, `retrieve`,
+    `update` and `destroy` actions.
+    """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = (IsAuthenticatedOrReadOnly,)

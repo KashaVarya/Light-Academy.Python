@@ -11,7 +11,16 @@ class CategorySerializer(serializers.ModelSerializer):
                   'name',
                   'description',
                   'is_active',
-                  'user',
+                  )
+        read_only_fields = ('id',)
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ('id',
+                  'username',
                   )
         read_only_fields = ('id',)
 
@@ -20,21 +29,27 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
 
     # user = serializers.SlugRelatedField(queryset=User.objects.all(),
     #                                     slug_field='username')
-    # category_id = serializers.RelatedField(queryset=Category.objects.all(),
-    #                                        write_only=True)
-    # category_repr = CategorySerializer(source='category_name',
-    #                        read_only=True)
 
-    user = serializers.ReadOnlyField(source='user.username')
+    category = serializers.HyperlinkedRelatedField(view_name='category-detail',
+                                                   queryset=Category.objects.all(),
+                                                   )
+    category_repr = CategorySerializer(source='category',)
+
+    user = serializers.HyperlinkedRelatedField(view_name='user-detail',
+                                               read_only=True,
+                                               )
+    user_repr = UserSerializer(source='user',)
 
     class Meta:
         model = Post
-        fields = ('url',
-                  'id',
+        fields = ('id',
                   'status',
                   'category',
+                  'category_repr',
                   'user',
+                  'user_repr',
                   'title',
+                  'url',
                   'content',
                   'created_on',
                   'updated_on',
@@ -46,18 +61,3 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
                             'updated_on',
                             )
         extra_kwargs = {'title': {'required': True}}  # словарь
-
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    posts = serializers.HyperlinkedRelatedField(many=True,
-                                                view_name='post-detail',
-                                                read_only=True,
-                                                )
-
-    class Meta:
-        model = User
-        fields = ('id',
-                  'username',
-                  'url',
-                  'posts',
-                  )
