@@ -6,7 +6,7 @@ from .serializers import UserSerializer
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.contrib.auth.models import User
-from .permissions import IsOwnerOrReadOnly
+from .permissions import IsOwnerOrReadOnly, IsStaffOrReadOnly
 
 
 def main(request):
@@ -21,8 +21,8 @@ class PostViewSet(viewsets.ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,
-                          IsOwnerOrReadOnly,)
-    # lookup_field = 'username'
+                          IsOwnerOrReadOnly,
+                          )
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
@@ -42,7 +42,9 @@ class CategoryViewSet(viewsets.ModelViewSet):
     """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    permission_classes = (IsAuthenticatedOrReadOnly,
+                          IsStaffOrReadOnly,
+                          )
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):

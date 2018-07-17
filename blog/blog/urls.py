@@ -16,37 +16,29 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
-from app_posts import views
+from app_posts import views as my_views
 from rest_framework.routers import DefaultRouter
 from rest_framework_swagger.views import get_swagger_view
+from rest_framework.authtoken import views
 
 
 schema_view = get_swagger_view(title='Pastebin API')
 
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
-router.register(r'posts', views.PostViewSet)
-router.register(r'categories', views.CategoryViewSet)
-router.register(r'users', views.UserViewSet)
+router.register(r'posts', my_views.PostViewSet)
+router.register(r'categories', my_views.CategoryViewSet)
+router.register(r'users', my_views.UserViewSet)
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^swagger$', schema_view),
-    url(r'^$', views.main),
-    # url(r'^posts$', views.PostList.as_view(), name='post-list'),
-    # url(r'^posts/(?P<pk>[0-9]+)$',
-    #     views.PostDetail.as_view(),
-    #     name='post-detail'),
-    # url(r'^users$', views.UserList.as_view(), name='user-list'),
-    # url(r'^users/(?P<pk>[0-9]+)$',
-    #     views.UserDetail.as_view(),
-    #     name='user-detail'),
+    url(r'^$', my_views.main),
     url(r'^api-auth/', include('rest_framework.urls')),
-
     url(r'^', include(router.urls)),
-
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^api-token-auth/', views.obtain_auth_token),
 ]
 
 

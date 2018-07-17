@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 from blog import secret
 
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -41,6 +42,7 @@ INSTALLED_APPS = (
     'app_posts',
     'rest_framework',
     'rest_framework_swagger',
+    'rest_framework.authtoken',
 )
 
 MIDDLEWARE = (
@@ -128,5 +130,10 @@ STATIC_URL = '/static/'
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 3,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
     # 'DEFAULT_PERMISSION_CLASS': 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
 }

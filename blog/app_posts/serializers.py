@@ -33,12 +33,16 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
     category = serializers.HyperlinkedRelatedField(view_name='category-detail',
                                                    queryset=Category.objects.all(),
                                                    )
-    category_repr = CategorySerializer(source='category',)
+    category_repr = CategorySerializer(source='category',
+                                       read_only=True,
+                                       )
 
     user = serializers.HyperlinkedRelatedField(view_name='user-detail',
                                                read_only=True,
                                                )
-    user_repr = UserSerializer(source='user',)
+    user_repr = UserSerializer(source='user',
+                               read_only=True,
+                               )
 
     class Meta:
         model = Post
@@ -53,8 +57,6 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
                   'content',
                   'created_on',
                   'updated_on',
-                  # 'category_id',
-                  # 'category_repr'
                   )
         read_only_fields = ('id',
                             'created_on',
