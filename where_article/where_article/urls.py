@@ -28,5 +28,5 @@ urlpatterns = [
     url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^review$', views.ReviewView.as_view()),
     url(r'^decline/(?P<id>\w+)$', views.DeclineView.as_view()),
-    url(r'^(?P<category>\w+)$', views.MainView.as_view()),
+    url(r'^(?P<category>\w+)$', views.MainView.as_view(), name='main'),
 ]

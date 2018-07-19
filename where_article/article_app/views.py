@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.views.generic import TemplateView, ListView, RedirectView
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -12,11 +9,6 @@ class MainView(ListView):
     model = Article
 
     def get_template_names(self):
-
-        # user = User.objects.get(username='varya')
-        # print('!!', user.password)
-        # print(user)
-
         if not self.request.user.is_authenticated:
             return 'article_app/main.html'
         elif self.request.user.is_staff:
@@ -30,6 +22,7 @@ class MainView(ListView):
         category_selected = Category.objects.get(name=self.kwargs['category'])
         context['categories'] = categories
         context['category_selected'] = category_selected
+        context['user'] = self.request.user
         return context
 
 
@@ -42,7 +35,6 @@ class LogInView(TemplateView):
         password = request.POST.get('inputPassword')
 
         user = authenticate(username=name, password=password)
-        print(user)
         if user is not None:
             login(request, user)
 

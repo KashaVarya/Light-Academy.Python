@@ -40,7 +40,7 @@ def add_articles(apps, schema_editor):
     Category = apps.get_model('article_app', 'Category')
     User = apps.get_model('auth', 'User')
 
-    user1 = User.objects.get(username='staff')
+    user1 = User.objects.get(username='editor')
     user2 = User.objects.get(username='user')
 
     art1 = Article(title='My world',
