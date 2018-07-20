@@ -3,13 +3,17 @@ from article_app.models import Category, Article, UserModel
 from django.contrib.auth.models import User
 
 
-class CategoryModelClass(TestCase):
+class CategoryModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         # Set up non-modified objects used by all test methods
         Category.objects.create(name='CatName',
                                 description='CatDesc'
                                 )
+
+    def test_object_create(self):
+        category = Category.objects.get(id=1)
+        self.assertTrue(isinstance(category, Category))
 
     def test_name_max_length(self):
         category = Category.objects.get(id=1)
@@ -22,7 +26,7 @@ class CategoryModelClass(TestCase):
         self.assertEquals(max_length, 64)
 
 
-class ArticleModelClass(TestCase):
+class ArticleModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         # Set up non-modified objects used by all test methods
@@ -39,13 +43,17 @@ class ArticleModelClass(TestCase):
                                status=True
                                )
 
+    def test_object_create(self):
+        article = Article.objects.get(id=1)
+        self.assertTrue(isinstance(article, Article))
+
     def test_title_max_length(self):
         article = Article.objects.get(id=1)
         max_length = article._meta.get_field('title').max_length
         self.assertEquals(max_length, 64)
 
 
-class UserModelClass(TestCase):
+class UserModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         # Set up non-modified objects used by all test methods
@@ -55,6 +63,10 @@ class UserModelClass(TestCase):
         UserModel.objects.create(user=user,
                                  telephone='0973025450'
                                  )
+
+    def test_object_create(self):
+        user = UserModel.objects.get(id=1)
+        self.assertTrue(isinstance(user, UserModel))
 
     def test_telephone_max_length(self):
         user = UserModel.objects.get(id=1)
