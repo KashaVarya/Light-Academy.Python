@@ -1,8 +1,10 @@
 from django.shortcuts import redirect
 from django.views.generic import TemplateView, ListView, RedirectView
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Permission
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from .models import UserModel, Article, Category
+from django.contrib.contenttypes.models import ContentType
 
 
 class MainView(ListView):
@@ -22,7 +24,6 @@ class MainView(ListView):
         category_selected = Category.objects.get(name=self.kwargs['category'])
         context['categories'] = categories
         context['category_selected'] = category_selected
-        context['user'] = self.request.user
         return context
 
 
@@ -71,8 +72,9 @@ class LogOutView(RedirectView):
         return super().get_redirect_url(*args, **kwargs)
 
 
-class AddArticleView(TemplateView):
+class AddArticleView(LoginRequiredMixin, TemplateView):
 
+    login_url = '/login'
     template_name = 'article_app/add_article.html'
 
     def post(self, request, *args, **kwargs):
@@ -95,8 +97,11 @@ class AddArticleView(TemplateView):
         return context
 
 
-class AddCategoryView(TemplateView):
-
+class AddCategoryView(LoginRequiredMixin,
+                      PermissionRequiredMixin,
+                      TemplateView):
+    login_url = '/login'
+    permission_required = 'auth.can_add_category'
     template_name = 'article_app/add_category.html'
 
     def post(self, request, *args, **kwargs):
@@ -116,8 +121,12 @@ class AddCategoryView(TemplateView):
         return context
 
 
-class ReviewView(TemplateView):
+class ReviewView(LoginRequiredMixin,
+                 PermissionRequiredMixin,
+                 TemplateView):
 
+    permission_required = 'auth.can_review'
+    login_url = '/login'
     template_name = 'article_app/review.html'
 
     def post(self, request, *args, **kwargs):
@@ -140,8 +149,12 @@ class ReviewView(TemplateView):
         return context
 
 
-class DeclineView(RedirectView):
+class DeclineView(LoginRequiredMixin,
+                  PermissionRequiredMixin,
+                  RedirectView):
 
+    permission_required = 'auth.can_decline'
+    login_url = '/login'
     url = '/review'
 
     def get_redirect_url(self, *args, **kwargs):
@@ -152,7 +165,4 @@ class DeclineView(RedirectView):
 
 
 def on_main_page(request):
-    return redirect('/World')
-
-
-
+    return redirect('/' + Category.objects.get(id=1).name)
