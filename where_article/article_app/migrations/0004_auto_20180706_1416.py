@@ -6,17 +6,46 @@ from django.contrib.auth.hashers import make_password
 
 def add_users(apps, schema_editor):
     User = apps.get_model('auth', 'User')
+    Permission = apps.get_model('auth', 'Permission')
+    ContentType = apps.get_model('contenttypes', 'ContentType')
 
-    user1 = User(username='editor',
-                 password=make_password('editor'),
-                 email='editor@gmail.com',
-                 is_staff=True)
+    content_type = ContentType.objects.get_for_model(User)
+    permission1 = Permission.objects.create(
+        codename='can_add_category',
+        name='Can Add Category',
+        content_type=content_type,
+    )
+    permission2 = Permission.objects.create(
+        codename='can_review',
+        name='Can Review',
+        content_type=content_type,
+    )
+    permission3 = Permission.objects.create(
+        codename='can_decline',
+        name='Can Decline',
+        content_type=content_type,
+    )
+
+    user1 = User(
+        username='editor',
+        password=make_password('editor'),
+        email='editor@gmail.com',
+        is_staff=True
+    )
+    user1.save()
+    user1.user_permissions.set([
+        permission1,
+        permission2,
+        permission3,
+    ])
     user1.save()
 
-    user2 = User(username='user',
-                 password=make_password('user'),
-                 email='user@gmail.com',
-                 is_staff=False)
+    user2 = User(
+        username='user',
+        password=make_password('user'),
+        email='user@gmail.com',
+        is_staff=False
+    )
     user2.save()
 
 
@@ -114,7 +143,7 @@ def add_articles(apps, schema_editor):
                    user=user1)
     art7.save()
 
-    art8 = Article(title='Echo cake',
+    art8 = Article(title='Echo cake2',
                    content='Cake is often served as a celebratory dish on ceremonial occasions, such as weddings,'
                            ' anniversaries, and birthdays. There are countless cake recipes; some are bread-like,'
                            ' some are rich and elaborate, and many are centuries old. Cake making is no longer'
