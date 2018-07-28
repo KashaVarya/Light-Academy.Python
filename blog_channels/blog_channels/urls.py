@@ -32,7 +32,7 @@ router.register(r'users', my_views.UserViewSet)
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^swagger$', schema_view),
-    url(r'^$', my_views.main),
+    url(r'^$', my_views.PostListView.as_view()),
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'^', include(router.urls)),
     url(r'^i18n/', include('django.conf.urls.i18n')),

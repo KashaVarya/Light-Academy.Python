@@ -1,17 +1,19 @@
-
 from django.shortcuts import render
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from django.contrib.auth.models import User
+from django.views.generic import ListView
+
 from .models import Post, Category
 from .serializers import PostSerializer
 from .serializers import CategorySerializer
 from .serializers import UserSerializer
-from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from django.contrib.auth.models import User
 from .permissions import IsOwnerOrReadOnly, IsStaffOrReadOnly
 
 
-def main(request):
-    return 1
+class PostListView(ListView):
+    model = Post
+    template_name = 'blog/main.html'
 
 
 class PostViewSet(viewsets.ModelViewSet):
