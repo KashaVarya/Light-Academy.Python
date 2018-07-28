@@ -1,24 +1,6 @@
 {% extends "blog/wrapper.html" %}
 
 {% block main %}
-    What chat room would you like to enter?<br/>
-    <input id="room-name-input" type="text" size="100"/><br/>
-    <input id="room-name-submit" type="button" value="Enter"/>
-
-    <script>
-        document.querySelector('#room-name-input').focus();
-        document.querySelector('#room-name-input').onkeyup = function(e) {
-            if (e.keyCode === 13) {  // enter, return
-                document.querySelector('#room-name-submit').click();
-            }
-        };
-
-        document.querySelector('#room-name-submit').onclick = function(e) {
-            var roomName = document.querySelector('#room-name-input').value;
-            window.location.pathname = '/chat/' + roomName + '/';
-        };
-    </script>
-
     {% for post in object_list %}
         <div class="blog-post">
             <h2 class="blog-post-title">{{ post.title }}</h2>
@@ -30,5 +12,50 @@
             <hr>
         </div>
     {% endfor %}
+
+    <script>
+        function htmlToElement(html) {
+            var template = document.createElement('template');
+            html = html.trim();
+            template.innerHTML = html;
+            return template.content.firstChild;
+        }
+
+        var chatSocket = new WebSocket(
+            'ws://' + window.location.host +
+            '/ws/blog/');
+
+        chatSocket.onmessage = function(e) {
+            var data = JSON.parse(e.data);
+            var post_id = data['post_id'];
+            fetch('/posts/' + post_id).then(function (response) {
+                return response.json();
+            }).then(function (post) {
+                console.log(post);
+
+                var postMarkup = `
+                    <div class="blog-post">
+                        <h2 class="blog-post-title">${post.title}</h2>
+                        <p class="blog-post-meta">Category: ${post.category_repr.name}</p>
+                        <p class="blog-post-meta">by ${post.user_repr.username}</p>
+                        <p class="blog-post-meta">created on ${new Date(post.created_on).toLocaleString()}</p>
+                        <p class="blog-post-meta">updated on ${new Date(post.updated_on).toLocaleString()}</p>
+                        <p>${post.content}</p>
+                        <hr>
+                    </div>
+                `;
+
+                var firstPost = document.querySelectorAll('.blog-post')[0];
+                firstPost.parentNode.insertBefore(
+                    htmlToElement(postMarkup),
+                    firstPost
+                );
+            });
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error("Chat socket closed!");
+        };
+    </script>
 
 {% endblock %}
