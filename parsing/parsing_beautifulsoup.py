@@ -12,4 +12,3 @@ article_list = soup.select('li article.post h2 a')
 
 for article in article_list:
     print(article['href'])
-
