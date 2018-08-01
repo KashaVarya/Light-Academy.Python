@@ -1,12 +1,12 @@
-from beautifulsoup4 import BeatifulSoup
+from bs4 import BeautifulSoup
 import requests
 
 main_domain_stat = 'https://habr.com/'
-r = requests(main_domain_stat)
+r = requests.get(main_domain_stat)
 
-soup = BeatifulSoup(
-    r.conten,
-    'html.pasrser'
+soup = BeautifulSoup(
+    r.content,
+    'html.parser'
 )
 article_list = soup.select('li article.post h2 a')
 
