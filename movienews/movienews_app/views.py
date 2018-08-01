@@ -14,8 +14,7 @@ def index(request):
     return render(request, 'movienews_app/index.html')
 
 
-class MovieView(ListView):
+class MovieListView(ListView):
     model = MovieModel
     template_name = 'movienews_app/movies_list.html'
-    context_object_name = 'movies_list'
 
