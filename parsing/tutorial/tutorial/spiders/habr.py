@@ -33,7 +33,7 @@ class HabrSpider(scrapy.Spider):
         article['text'] = response.xpath(
             '//div[contains(@class, "post__body_full")]'
             '/div[contains(@class, "post__text")]'
-            '/text()'
+            '//text()'
         ).extract()
 
         article['images'] = response.xpath(
