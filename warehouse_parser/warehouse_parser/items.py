@@ -13,6 +13,5 @@ class WarehouseParserItem(scrapy.Item):
     brand = scrapy.Field()
     price = scrapy.Field()
     description = scrapy.Field()
-    currency = scrapy.Field()
     size = scrapy.Field()
     image = scrapy.Field()
