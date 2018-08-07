@@ -8,27 +8,11 @@ class WarehouseParserSpider(scrapy.Spider):
         'barneyswarehouse.com',
     ]
     start_urls = [
-        # 'https://www.barneyswarehouse.com/category/men/shoes/N-1waxoc5',
-        # 'https://www.barneyswarehouse.com/category/women/shoes/N-w9m0kw',
-        'https://www.barneyswarehouse.com/'
-        'category/men/shoes/N-1waxoc5;'
-        'jsessionid=zCsUbdizy76cAmuUYVjUY8IpEzgYaKaLx5rkQmQB5ePGPUoqbiyE!'
-        '-1378713604!763426-prodapp1!20680!-1?page=1&recordsPerPage=48'
+        'https://www.barneyswarehouse.com/category/men/shoes/N-1waxoc5',
+        'https://www.barneyswarehouse.com/category/women/shoes/N-w9m0kw',
     ]
 
-    def start_requests(self):
-        for url in self.start_urls:
-            yield scrapy.Request(
-                url,
-                callback=self.parse_links,
-                headers={
-                    'User-Agent':
-                        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) '
-                        'Ubuntu Chromium/67.0.3396.99 Chrome/67.0.3396.99 Safari/537.36'
-                }
-            )
-
-    def parse_links(self, response):
+    def parse(self, response):
         links = response.xpath(
             '//div[@class="product-tile "]'
             '/div[@class="wrap-desc"]'
@@ -37,40 +21,27 @@ class WarehouseParserSpider(scrapy.Spider):
             '/@href'
         ).extract()
 
-        for link in links[:2]:
+        for link in links:
             yield scrapy.Request(
                 'https://www.barneyswarehouse.com' + link,
-                callback=self.parse_men_shoes,
-                headers={
-                    'User-Agent':
-                        'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) '
-                        'Ubuntu Chromium/67.0.3396.99 Chrome/67.0.3396.99 Safari/537.36'
-                }
+                callback=self.parse_men_shoes
             )
 
     def parse_men_shoes(self, response):
-        block1 = response.xpath(
+        block = response.xpath(
             '//div[@class="productDetailContent"]'
             '/div[contains(@class, "pdp-container")]'
             '/div[contains(@class, "primary-content")]'
             '/div[@class="pdp-main"]'
         )
 
-        block2 = block1.xpath(
-            'div[@id="productInfoContainer"]'
-            '/div[@class="pdp-picker-contents"]'
-            '/div[@id="picker_contents"]'
-            '/div[@id="atg_store_picker"]'
-            '/div[@class="atg_store_selectAttributes"]'
-        )
-
         item = WarehouseParserItem()
-        item['title'] = self.parse_title(block1)
-        item['brand'] = self.parse_brand(block1)
-        item['price'] = self.parse_price(block2)
-        item['size'] = self.parse_size(block2)
-        item['description'] = self.parse_description(block1)
-        item['image'] = self.parse_image(block1)
+        item['title'] = self.parse_title(block)
+        item['brand'] = self.parse_brand(block)
+        item['price'] = self.parse_price(block)
+        item['size'] = self.parse_size(block)
+        item['description'] = self.parse_description(block)
+        item['image'] = self.parse_image(block)
         yield item
 
     def parse_title(self, response):
@@ -90,7 +61,8 @@ class WarehouseParserSpider(scrapy.Spider):
 
     def parse_price(self, response):
         return response.xpath(
-            'div[@class="picker_price_attribute"]'
+            'div[@id="productInfoContainer"]'
+            '//div[@class="picker_price_attribute"]'
             '/div[@class="atg_store_productPrice"]'
             '/div[@class="red-discountPrice"]'
             '/text()'
@@ -100,13 +72,14 @@ class WarehouseParserSpider(scrapy.Spider):
         return [
             size.strip()
             for size in response.xpath(
-                            'div[@class="size-qty-section"]'
-                            '/div[@class="atg_store_pickerContainer"]'
-                            '/div[@class="atg_store_sizePicker size-label"]'
-                            '/span[@class="selector"]'
-                            '/a'
-                            '/text()'
-                        ).extract()
+                'div[@id="productInfoContainer"]'
+                '//div[@class="size-qty-section"]'
+                '/div[@class="atg_store_pickerContainer"]'
+                '/div[@class="atg_store_sizePicker size-label"]'
+                '/span[@class="selector"]'
+                '/a'
+                '/text()'
+            ).extract()
         ]
 
     def parse_description(self, response):
@@ -114,11 +87,7 @@ class WarehouseParserSpider(scrapy.Spider):
             description.strip()
             for description in response.xpath(
                                     'div[@id="productInfoContainer"]'
-                                    '/div[@class="panel-group clear"]'
-                                    '/div[@class="panel panel-default"]'
-                                    '/div[@class="panel-collapse collapse in"]'
-                                    '/div[@class="panel-body standard-p"]'
-                                    '/div[@class="pdpReadMore"]'
+                                    '//div[@class="pdpReadMore"]'
                                     '//text()'
                                 ).extract()
         ]))
