@@ -1,8 +1,9 @@
 import scrapy
+from scrapy_redis.spiders import RedisSpider
 from ..items import WarehouseParserItem
 
 
-class WarehouseParserSpider(scrapy.Spider):
+class WarehouseParserSpider(RedisSpider):
     name = 'warehouse'
     allowed_domains = [
         'barneyswarehouse.com',
