@@ -5,7 +5,10 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
+from parser_app import tasks
+
 
 class WarehouseParserPipeline(object):
     def process_item(self, item, spider):
+        tasks.save_to_db.delay(item)
         return item
