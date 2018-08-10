@@ -61,16 +61,18 @@ class WarehouseParserSpider(RedisSpider):
         ).extract_first().strip()
 
     def parse_price(self, response):
-        return response.xpath(
-            'div[@id="productInfoContainer"]'
-            '//div[@class="picker_price_attribute"]'
-            '/div[@class="atg_store_productPrice"]'
-            '/div[@class="red-discountPrice"]'
-            '/text()'
-        ).extract_first().strip()
+        return ', '.join(list(filter(lambda s: len(s) > 0, [
+            price.strip()
+            for price in response.xpath(
+                'div[@id="productInfoContainer"]'
+                '//div[@class="picker_price_attribute"]'
+                '/div[@class="atg_store_productPrice"]'
+                '//text()'
+            ).extract()
+        ])))
 
     def parse_size(self, response):
-        return [
+        return ', '.join([
             size.strip()
             for size in response.xpath(
                 'div[@id="productInfoContainer"]'
@@ -81,17 +83,17 @@ class WarehouseParserSpider(RedisSpider):
                 '/a'
                 '/text()'
             ).extract()
-        ]
+        ])
 
     def parse_description(self, response):
-        return list(filter(lambda s: len(s) > 0, [
+        return ' '.join(list(filter(lambda s: len(s) > 0, [
             description.strip()
             for description in response.xpath(
                                     'div[@id="productInfoContainer"]'
                                     '//div[@class="pdpReadMore"]'
                                     '//text()'
                                 ).extract()
-        ]))
+        ])))
 
     def parse_image(self, response):
         return response.xpath(

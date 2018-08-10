@@ -1,31 +1,32 @@
-from django.views.generic import View
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.views.generic import TemplateView, RedirectView, ListView
 import redis
+
+from parser_app.models import ItemModel
 from warehouse import settings
 
 
-class IndexView(View):
-
-    def get(self, request):
-        return render(
-            request,
-            'parser_app/index.html',
-            {
-                'mes': '',
-            }
-        )
+class IndexView(TemplateView):
+    template_name = 'parser_app/index.html'
 
     def post(self, request):
         connection = redis.StrictRedis(
             host=settings.REDIS_HOST,
             port=settings.REDIS_PORT,
         )
-        connection.lpush('warehouse:start_url https://www.barneyswarehouse.com/category/men/shoes/N-1waxoc5')
-
-        return render(
-            request,
-            'parser_app/index.html',
-            {
-                'mes': 'Success push. Wait...',
-            }
+        connection.lpush(
+            'warehouse:start_urls',
+            'https://www.barneyswarehouse.com/category/men/shoes/N-1waxoc5',
+            'https://www.barneyswarehouse.com/category/women/shoes/N-w9m0kw'
         )
+
+        return HttpResponse('Success push. Wait...')
+
+
+class MainRedirectView(RedirectView):
+    url = 'parser'
+
+
+class ResultsView(ListView):
+    model = ItemModel
+    template_name = 'parser_app/result.html'

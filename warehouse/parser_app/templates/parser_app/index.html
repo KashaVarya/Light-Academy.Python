@@ -3,13 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Warehouse Parser</title>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
     <h2>
         Hi! Welcome to <i>Warehouse Parser</i>
     </h2>
-    <form method="post">
+    <form method="post" action="/parser" id="parse-form">
         <button type="submit">Parse!</button>
     </form>
+
+    <p id="response"></p>
+
+    <script>
+        var form = document.getElementById('parse-form');
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            axios.post(form.action, {})
+                .then(function (response) {
+                    var str = response.data;
+                    var respEl = document.getElementById('response');
+                    respEl.innerText = str;
+                    form.style.display = 'none';
+
+                    setTimeout(function () {
+                        window.location = '/result';
+                    }, 10000);
+                });
+        });
+    </script>
 </body>
 </html>

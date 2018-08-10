@@ -21,4 +21,6 @@ from parser_app import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^parser$', views.IndexView.as_view()),
+    url(r'^result$', views.ResultsView.as_view()),
+    url(r'^$', views.MainRedirectView.as_view()),
 ]
