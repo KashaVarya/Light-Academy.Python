@@ -1,9 +1,8 @@
 import scrapy
-from scrapy_redis.spiders import RedisSpider
 from ..items import WarehouseParserItem
 
 
-class WarehouseParserSpider(RedisSpider):
+class WarehouseParserSpider(scrapy.Spider):
     name = 'warehouse'
     allowed_domains = [
         'barneyswarehouse.com',
@@ -61,13 +60,15 @@ class WarehouseParserSpider(RedisSpider):
         ).extract_first().strip()
 
     def parse_price(self, response):
-        return response.xpath(
-            'div[@id="productInfoContainer"]'
-            '//div[@class="picker_price_attribute"]'
-            '/div[@class="atg_store_productPrice"]'
-            '/div[@class="red-discountPrice"]'
-            '/text()'
-        ).extract_first().strip()
+        return ', '.join(list(filter(lambda s: len(s) > 0, [
+            price.strip()
+            for price in response.xpath(
+                'div[@id="productInfoContainer"]'
+                '//div[@class="picker_price_attribute"]'
+                '/div[@class="atg_store_productPrice"]'
+                '//text()'
+            ).extract()
+        ])))
 
     def parse_size(self, response):
         return [
