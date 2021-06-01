@@ -23,4 +23,4 @@ requests==2.6.1
 six==1.10.0
 sqlparse==0.1.18
 texttable==0.8.1
-urllib3==1.13.1
+urllib3==1.26.5
